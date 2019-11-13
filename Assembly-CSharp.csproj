@@ -60,7 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ShellMovement.cs" />
     <Compile Include="Assets\Scripts\TankMovement.cs" />
+    <Compile Include="Assets\Scripts\TankShooting.cs" />
     <Compile Include="Assets\Scripts\TurretTurn.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Patrick/Documents/GitHub/Tank-Movement/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
