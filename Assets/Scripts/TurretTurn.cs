@@ -7,15 +7,12 @@ public class TurretTurn : MonoBehaviour
 
     public int rotationSpeed;
     public Rigidbody turret;
-    public Camera cam;
-    public Display display1;
     public float fieldHeight, fieldWidth;
     public GameObject playground;
 
     // Start is called before the first frame update
     void Start()
     {
-        display1 = Display.main;
         fieldWidth = playground.transform.lossyScale.x * 10;
         fieldHeight = playground.transform.lossyScale.z * 10;
     }
@@ -48,11 +45,11 @@ public class TurretTurn : MonoBehaviour
         mousePos.y = 1.1f;
         //calculate and set the direction the turret should point at
         Vector3 direction = tankPos - mousePos;
-        Vector3 angle = new Vector3(0, 0, 0);
+        Vector3 a = new Vector3(0, 0, 0);
         if(mousePos.z > tankPos.z)
-            angle.y = Mathf.Atan(direction.x / direction.z) * 180 / Mathf.PI;
+            a.y = Mathf.Atan(direction.x / direction.z) * 180 / Mathf.PI;
         else
-            angle.y = 180 + Mathf.Atan(direction.x / direction.z) * 180 / Mathf.PI;
-        turret.transform.SetPositionAndRotation(tankPos, Quaternion.Euler(angle));
+            a.y = 180 + Mathf.Atan(direction.x / direction.z) * 180 / Mathf.PI;
+        turret.transform.SetPositionAndRotation(tankPos, Quaternion.Euler(a));
     }
 }
