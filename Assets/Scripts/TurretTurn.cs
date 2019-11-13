@@ -6,14 +6,18 @@ public class TurretTurn : MonoBehaviour
 {
 
     public int rotationSpeed;
-    public Rigidbody rb;
+    public Rigidbody turret;
     public Camera cam;
     public Display display1;
+    public float fieldHeight, fieldWidth;
+    public GameObject playground;
 
     // Start is called before the first frame update
     void Start()
     {
         display1 = Display.main;
+        fieldWidth = playground.transform.lossyScale.x * 10;
+        fieldHeight = playground.transform.lossyScale.z * 10;
     }
 
     // Update is called once per frame
@@ -22,37 +26,33 @@ public class TurretTurn : MonoBehaviour
         SetRotation();
     }
 
-    void SetRotation()
+    /**
+     * Sets the rotation of the turret according to the postion of the mouse
+     * the turret will always be turned in the direction where the mouse is
+     */
+    private void SetRotation()
     {
         if (!Input.mousePresent)
         {
             print("no mouse found!");
             return;
         }
-        /*
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 tankPos = rb.transform.position;
-        Vector3 mouseDirection = cam.ScreenToWorldPoint(new Vector3(mousePos.x, cam.nearClipPlane, mousePos.y));
-        //Vector3 direction = mousePos - tankPos;
-        Quaternion rotation = Quaternion.Euler(mouseDirection);
-        rb.transform.SetPositionAndRotation(tankPos, rotation);
-        print(mouseDirection.ToString());
-        */
-
         
+        //get mouse and tank position (mouse position is according to its position on the computer screen, NOT in-game)
         Vector3 mousePos = Input.mousePosition;
-        mousePos.x += 25;
-        mousePos.z = mousePos.y + 25;
+        Vector3 tankPos = turret.transform.position;
+        //scale mouse position to a useful format and project it onto the in-game plane
+        mousePos.y = mousePos.y / Screen.height * fieldHeight;
+        mousePos.x = mousePos.x / Screen.width * fieldWidth;
+        mousePos.z = mousePos.y;
         mousePos.y = 1.1f;
-        mousePos.z = (mousePos.z / Screen.height) * 30;
-        mousePos.x = (mousePos.x / Screen.width) * 46;
-        Vector3 tankPos = rb.transform.position;
-        //tankPos.x /= display1.systemHeight;
-        //tankPos.y = tankPos.z / display1.systemWidth;
+        //calculate and set the direction the turret should point at
         Vector3 direction = tankPos - mousePos;
-        //direction = Vector3.Cross(new Vector3(direction.x, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, direction.z));
-        print(mousePos.ToString() + ", " + tankPos.ToString() + ", " + direction.ToString());
-        //print("h: " + display1.systemHeight);
-        rb.transform.SetPositionAndRotation(tankPos, Quaternion.Euler(direction));
+        Vector3 angle = new Vector3(0, 0, 0);
+        if(mousePos.z > tankPos.z)
+            angle.y = Mathf.Atan(direction.x / direction.z) * 180 / Mathf.PI;
+        else
+            angle.y = 180 + Mathf.Atan(direction.x / direction.z) * 180 / Mathf.PI;
+        turret.transform.SetPositionAndRotation(tankPos, Quaternion.Euler(angle));
     }
 }
