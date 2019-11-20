@@ -14,7 +14,7 @@ public class TankShooting : MonoBehaviour
     public Rigidbody turret;
     public Rigidbody shellPrefab;
     public GameObject shotLocation;
-
+    
 
     // Start is called before the first frame update
     void Start()
