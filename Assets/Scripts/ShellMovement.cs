@@ -9,18 +9,21 @@ public class ShellMovement : MonoBehaviour
     public int bounceCount;
     public int maxBounce = 1;
     public Rigidbody shell;
-    public string type = "normal";
+    public string type = "normal";//to be automatized later
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        shell.velocity = new Vector3(Mathf.Sin(shell.transform.rotation.y) * speed, 0, Mathf.Cos(shell.transform.rotation.y) * speed);
+        print(shell.velocity.ToString());
     }
 
     // Update is called once per frame
     void Update()
-    {        
-        transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
-
+    {
+        //transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
+        //if (Mathf.Abs(shell.transform.position.x) > 100 || Mathf.Abs(shell.transform.position.z) > 100)
+          //  Destroy(shell);
     }
 
     /**
@@ -33,21 +36,27 @@ public class ShellMovement : MonoBehaviour
      */
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "wall" || (other.tag == "hay" && type == "normal"))
+        print("trigger occurred");
+        if (other.CompareTag("Wall") || (other.CompareTag("Hay") && type == "Normal"))
         {
-            ++bounceCount;
+            //++bounceCount;
             if (bounceCount > maxBounce)
             {
                 Destroy(shell);
                 return;
             }
-            Bounce();
+            print("gonna bounce");
+            Vector3 v = shell.velocity;
+            Vector3 w = v;
+            v.z = -v.z;
+            shell.velocity.Set(v.x, v.y, v.z);
+            print("before: " + v.ToString() + ", after: " + w.ToString());
         }
-        else if(other.tag == "hay")
+        else if(other.CompareTag("Hay"))
         {
 
         }
-        else if(other.tag == "tank")
+        else if(other.CompareTag("Tank"))
         {
             
         }
@@ -58,6 +67,5 @@ public class ShellMovement : MonoBehaviour
      */
     private void Bounce()
     {
-
     }
 }
