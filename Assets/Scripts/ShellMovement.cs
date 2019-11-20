@@ -5,22 +5,34 @@ using UnityEngine;
 public class ShellMovement : MonoBehaviour
 {
 
-    public int speed = 8;
+    public int speed;
     public int bounceCount;
-    public int maxBounce = 1;
+    public int maxBounce;
     public Rigidbody shell;
-    public string type = "normal";
+    public GameObject shot;
+    public string type = "normal";//to be automatized later
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        shell = GetComponent<Rigidbody>();
+        shot = shell.gameObject;
+        speed = 8;
+        print(shot.transform.rotation.y);
+        float x = Mathf.Sin(shell.rotation.y * Mathf.PI / 180) * speed;
+        float z = Mathf.Cos(shell.rotation.y * Mathf.PI / 180) * speed;
+        //print("x: " + x + ", z: " + z);
+        shell.velocity = new Vector3(x, 1, z);
+        //print(shell.velocity.ToString());
     }
 
     // Update is called once per frame
     void Update()
-    {        
-        transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
-
+    {
+        //print(shell.velocity.ToString());
+        //transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
+        //if (Mathf.Abs(shell.transform.position.x) > 100 || Mathf.Abs(shell.transform.position.z) > 100)
+          //  Destroy(shell);
     }
 
     /**
@@ -33,23 +45,32 @@ public class ShellMovement : MonoBehaviour
      */
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "wall" || (other.tag == "hay" && type == "normal"))
+        //print("trigger occurred");
+        if (other.CompareTag("Wall") || (other.CompareTag("Hay") && type == "Normal"))
         {
             ++bounceCount;
             if (bounceCount > maxBounce)
             {
-                Destroy(shell);
+                Destroy(shot);
                 return;
             }
             Bounce();
+            
         }
-        else if(other.tag == "hay")
+        else if(other.CompareTag("Hay"))
         {
 
         }
-        else if(other.tag == "tank")
+        else if(other.CompareTag("Tank"))
         {
             
+        }
+        else if(other.CompareTag("Shot"))
+        {
+            //some animation
+
+            Destroy(other);
+            Destroy(shot);
         }
     }
 
@@ -58,6 +79,11 @@ public class ShellMovement : MonoBehaviour
      */
     private void Bounce()
     {
+        print("gonna bounce");
 
+        Vector3 v = shell.velocity;
+        Vector3 w = v;
+        shell.velocity = new Vector3(v.x, v.y, -v.z);
+        print("before: " + w.ToString() + ", after: " + v.ToString() + ", velocity: " + shell.velocity.ToString());
     }
 }

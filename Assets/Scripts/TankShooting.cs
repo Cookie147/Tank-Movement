@@ -14,7 +14,7 @@ public class TankShooting : MonoBehaviour
     public Rigidbody turret;
     public Rigidbody shellPrefab;
     public GameObject shotLocation;
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,7 @@ public class TankShooting : MonoBehaviour
 
         if (timeSinceShot >= reloadTime && shots < maxShots)
         {
-            print("ready to fire");
+            //print("ready to fire");
             if (Input.GetMouseButtonDown(shootButton))
             {
                 Shoot();
@@ -49,7 +49,7 @@ public class TankShooting : MonoBehaviour
                 timeSinceShot = 0;
             }
         }
-        else print("just fired");
+        //else print("just fired");
     }
 
     private void Shoot()
