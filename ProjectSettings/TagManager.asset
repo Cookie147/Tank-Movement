@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
   - Hay
   - Mine
-  - Tank
   - Shot
+  - Player Tank
+  - Enemy Tank
+  - Wall
   layers:
   - Default
   - TransparentFX
