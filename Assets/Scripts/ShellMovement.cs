@@ -73,63 +73,22 @@ public class ShellMovement : MonoBehaviour
      */
     private void Bounce(Collider other)
     {
-        /*
-        Vector3 shellv = shell.transform.eulerAngles;
-        Vector3 wallv = other.transform.eulerAngles;
-        float a = Vector3.Angle(shellv, wallv);
-
-        print("shell: " + shellv.ToString() + ", wall: " + wallv.ToString() + ", angle: " + a);
-        */
-        //Vector3 v = shell.velocity;
-        //shell.velocity = new Vector3(v.x, v.y, -v.z);
-
-        float angle = 0;
+        float angle;
         Vector3 dir = other.transform.position - shell.transform.position;
-        if (dir.x < dir.z)
+        float currentAngle = shell.transform.eulerAngles.y;
+        if (Mathf.Abs(dir.x) < Mathf.Abs(dir.z))
         {
-            dir.z = 0;
+            angle = 180 - currentAngle;
         }
-        else if (dir.z < dir.x)
+        else if (Mathf.Abs(dir.z) < Mathf.Abs(dir.x))
         {
-            dir.x = 0;
+            angle = 360 - currentAngle;
         }
         else
         {
-            angle = 180;
-            shot.transform.Rotate(0, angle, 0);
-            return;
+            angle = currentAngle + 180;
         }
-        shell.transform.rotation = Quaternion.Euler(Vector3.Reflect(shell.transform.eulerAngles, dir));
-        //shell.velocity = Vector3.Reflect(shell.transform.eulerAngles, dir);
-
-
-
-        /*
-        float angle = shell.transform.eulerAngles.y;
-        if(angle % 90 == 0)
-        {
-            //only one collision is possible
-            //⇒ rotate by 180° 
-            //not tested yet
-            shell.transform.rotation = Quaternion.Euler(new Vector3(0, (shell.transform.eulerAngles.y + 180) % 360, 0));
-        }
-        if(angle < 180)
-        {
-
-        }
-        else if(angle > 180)
-        {
-
-        }
-
-
-        switch((angle + 45) % 90)
-        {
-            case 1: 
-                break;
-            default: 
-                break;
-        }
-        */
+        shot.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
+        shell.velocity = new Vector3(Mathf.Sin(angle * Mathf.PI / 180) * speed, 0, Mathf.Cos(angle * Mathf.PI / 180) * speed);
     }
 }
