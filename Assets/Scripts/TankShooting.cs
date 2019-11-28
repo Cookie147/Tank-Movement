@@ -54,7 +54,6 @@ public class TankShooting : MonoBehaviour
 
     private void Shoot()
     {
-        
-        Rigidbody newShell = Instantiate(shellPrefab, shotLocation.transform.position, turret.rotation) as Rigidbody;
+        _ = Instantiate(shellPrefab, shotLocation.transform.position, turret.rotation) as Rigidbody;
     }
 }

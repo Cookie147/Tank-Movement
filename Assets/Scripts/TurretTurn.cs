@@ -10,11 +10,17 @@ public class TurretTurn : MonoBehaviour
     public float fieldHeight, fieldWidth;
     public GameObject playground;
 
+    private Camera cam;
+    private int floorMask;
+    private const float rayLength = 100f;
+
     // Start is called before the first frame update
     void Start()
     {
         fieldWidth = playground.transform.lossyScale.x * 10;
         fieldHeight = playground.transform.lossyScale.z * 10;
+        cam = Camera.main;
+        floorMask = LayerMask.GetMask("Floor");
     }
 
     // Update is called once per frame
@@ -34,7 +40,37 @@ public class TurretTurn : MonoBehaviour
             print("no mouse found!");
             return;
         }
+        Vector3 mousePos = Input.mousePosition;
+        /*
+        //works exactly but doesn't support multiple inputs, e.g. doesn't turn while movement buttons are pressed
+        Ray r = cam.ScreenPointToRay(mousePos);
+
+        if(Physics.Raycast(r, out RaycastHit hit, rayLength, floorMask))
+        {
+            Vector3 direction = hit.point - transform.position;
+            //direction.y = 0f;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //turret.MoveRotation(Quaternion.LookRotation(direction));
+        }
+        //*/
+
+        //not exactly the direction the mouse is
         
+        Vector2 tankOnScreen = cam.WorldToViewportPoint(transform.position);
+        Vector2 mouseOnScreen = (Vector2) cam.ScreenToViewportPoint(mousePos);
+        float angle = -90f - Mathf.Atan2(tankOnScreen.y - mouseOnScreen.y, tankOnScreen.x - mouseOnScreen.x) * Mathf.Rad2Deg;
+        //transform.rotation = 
+        transform.rotation = Quaternion.Euler(new Vector3(0f, angle, 0f));
+
+        //*/
+        /*
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 worldPos = cam.ScreenToWorldPoint(new Vector3(mousePos.x, cam.pixelHeight - mousePos.y, cam.nearClipPlane));
+
+        print(mousePos.ToString() + " ⇒ " + worldPos.ToString());
+
+
+        *//*
         //get mouse and tank position (mouse position is according to its position on the computer screen, NOT in-game)
         Vector3 mousePos = Input.mousePosition;
         Vector3 tankPos = turret.transform.position;
@@ -51,5 +87,6 @@ public class TurretTurn : MonoBehaviour
         else
             a.y = 180 + Mathf.Atan(direction.x / direction.z) * 180 / Mathf.PI;
         turret.transform.SetPositionAndRotation(tankPos, Quaternion.Euler(a));
+        //*/
     }
 }

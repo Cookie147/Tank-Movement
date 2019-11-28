@@ -8,6 +8,7 @@ public class ShellMovement : MonoBehaviour
     public int speed;
     public int bounceCount;
     public int maxBounce;
+    public const float D = 0.75f;
     public Rigidbody shell;
     public GameObject shot;
     public string type = "normal";//to be automatized later
@@ -18,21 +19,15 @@ public class ShellMovement : MonoBehaviour
         shell = GetComponent<Rigidbody>();
         shot = shell.gameObject;
         speed = 8;
-        print(shot.transform.rotation.y);
-        float x = Mathf.Sin(shell.rotation.y * Mathf.PI / 180) * speed;
-        float z = Mathf.Cos(shell.rotation.y * Mathf.PI / 180) * speed;
-        //print("x: " + x + ", z: " + z);
+        float x = Mathf.Sin(shell.rotation.eulerAngles.y * Mathf.PI / 180) * speed;
+        float z = Mathf.Cos(shell.rotation.eulerAngles.y * Mathf.PI / 180) * speed;
         shell.velocity = new Vector3(x, 1, z);
-        //print(shell.velocity.ToString());
     }
 
     // Update is called once per frame
     void Update()
     {
-        //print(shell.velocity.ToString());
-        //transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * speed);
-        //if (Mathf.Abs(shell.transform.position.x) > 100 || Mathf.Abs(shell.transform.position.z) > 100)
-          //  Destroy(shell);
+        
     }
 
     /**
@@ -45,7 +40,6 @@ public class ShellMovement : MonoBehaviour
      */
     private void OnTriggerEnter(Collider other)
     {
-        //print("trigger occurred");
         if (other.CompareTag("Wall") || (other.CompareTag("Hay") && type == "Normal"))
         {
             ++bounceCount;
@@ -54,14 +48,14 @@ public class ShellMovement : MonoBehaviour
                 Destroy(shot);
                 return;
             }
-            Bounce();
+            Bounce(other);
             
         }
         else if(other.CompareTag("Hay"))
         {
 
         }
-        else if(other.CompareTag("Tank"))
+        else if(other.CompareTag("Enemy Tank"))
         {
             
         }
@@ -77,13 +71,24 @@ public class ShellMovement : MonoBehaviour
     /**
      * bounces off a wall in a mathematically ideal way
      */
-    private void Bounce()
+    private void Bounce(Collider other)
     {
-        print("gonna bounce");
-
-        Vector3 v = shell.velocity;
-        Vector3 w = v;
-        shell.velocity = new Vector3(v.x, v.y, -v.z);
-        print("before: " + w.ToString() + ", after: " + v.ToString() + ", velocity: " + shell.velocity.ToString());
+        float angle;
+        Vector3 dir = other.transform.position - shell.transform.position;
+        float currentAngle = shell.transform.eulerAngles.y;
+        if (Mathf.Abs(dir.x) < Mathf.Abs(dir.z))
+        {
+            angle = 180 - currentAngle;
+        }
+        else if (Mathf.Abs(dir.z) < Mathf.Abs(dir.x))
+        {
+            angle = 360 - currentAngle;
+        }
+        else
+        {
+            angle = currentAngle + 180;
+        }
+        shot.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
+        shell.velocity = new Vector3(Mathf.Sin(angle * Mathf.PI / 180) * speed, 0, Mathf.Cos(angle * Mathf.PI / 180) * speed);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TankMovement : MonoBehaviour
 {
-    private Rigidbody rb;
+    public Rigidbody rb;
     public float speed = 5;
 
     // Start is called before the first frame update
