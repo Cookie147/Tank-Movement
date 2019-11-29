@@ -23,6 +23,9 @@ public class TankMovement : MonoBehaviour
         //Tank movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        if (moveVertical == 0 && moveHorizontal == 0) return;
+        speed /= Mathf.Sqrt(Mathf.Abs(moveHorizontal) + Mathf.Abs(moveVertical));
+
 
         transform.Translate(transform.right * -moveHorizontal * Time.deltaTime * speed);
         transform.Translate(transform.forward * moveVertical * Time.deltaTime * speed);
