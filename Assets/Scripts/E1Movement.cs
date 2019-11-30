@@ -59,15 +59,22 @@ public class E1Movement : MonoBehaviour
         direction = (direction + Random.Range(-2, 2) + 7) % 8;//same here
         startPos = transform.position;
         moving = true;
-        print("length: " + length + ", dir: " + direction);
+        //print("length: " + length + ", dir: " + direction);
     }
 
     private void Move()
     {
         int moveHorizontal = GetHorizontal();
         int moveVertical = GetVertical();
-        transform.Translate(transform.right * -moveHorizontal * Time.deltaTime * speed);
-        transform.Translate(transform.forward * moveVertical * Time.deltaTime * speed);
+        int h = 0;
+        int v = 0;
+        float newSpeed = speed;
+        if (moveHorizontal != 0) h = 1;
+        if (moveVertical != 0) v = 1;
+        if (h == 0 && v == 0) return;
+        newSpeed /= Mathf.Sqrt(h + v);
+        transform.Translate(transform.right * -moveHorizontal * Time.deltaTime * newSpeed);
+        transform.Translate(transform.forward * moveVertical * Time.deltaTime * newSpeed);
 
         //Tank rotation
         Vector3 moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
@@ -91,11 +98,6 @@ public class E1Movement : MonoBehaviour
         {
             moving = false;
         }
-    }
-
-    private void RandomShot()
-    {
-
     }
 
     /*

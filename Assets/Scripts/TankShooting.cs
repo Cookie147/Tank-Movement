@@ -54,6 +54,8 @@ public class TankShooting : MonoBehaviour
 
     private void Shoot()
     {
-        _ = Instantiate(shellPrefab, shotLocation.transform.position, turret.rotation) as Rigidbody;
+        //animation and sounds
+        Rigidbody shot = Instantiate(shellPrefab, shotLocation.transform.position, turret.rotation) as Rigidbody;
+        shot.GetComponent<ShellMovement>().SetMyTank(gameObject);
     }
 }
