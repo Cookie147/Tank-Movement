@@ -7,12 +7,14 @@ public class E1Movement : MonoBehaviour
 
     public int speed;
     public Rigidbody rb;
+    public Rigidbody turret;
     public GameObject playerTank;
 
     private int length, direction;
     private float waitTimer;
     private bool moving = false;
     private bool wait = false;
+    private bool newMove = false;
     private Vector3 startPos;
 
     // Start is called before the first frame update
@@ -59,6 +61,7 @@ public class E1Movement : MonoBehaviour
         direction = (direction + Random.Range(-2, 2) + 7) % 8;//same here
         startPos = transform.position;
         moving = true;
+        newMove = true;
         //print("length: " + length + ", dir: " + direction);
     }
 
@@ -83,6 +86,19 @@ public class E1Movement : MonoBehaviour
             Quaternion newRotation = Quaternion.LookRotation(moveDirection);
             rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, newRotation, Time.deltaTime * 8);
         }
+
+        //*
+        if (newMove)
+        {
+            //adjust turret rotation
+            if (moveDirection != Vector3.zero)
+            {
+                Quaternion newRotation = Quaternion.LookRotation(-moveDirection);
+                turret.transform.rotation = Quaternion.Slerp(rb.transform.rotation, newRotation, Time.deltaTime * 8);
+            }
+            newMove = false;
+        }
+        //*/
 
         if ((transform.position - startPos).magnitude >= length)
         {

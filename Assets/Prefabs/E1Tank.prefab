@@ -346,6 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   rb: {fileID: 5102584573291682479}
+  turret: {fileID: 5102584572384959298}
   playerTank: {fileID: 0}
 --- !u!1 &5102584571721622797
 GameObject:
@@ -456,6 +457,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521442ecfa155bb408c8aa6b0425433b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxShots: 0
+  shootButton: 0
+  rotationSpeed: 100
+  reloadTime: 0
+  justShot: 0
+  turret: {fileID: 5102584572384959298}
+  shellPrefab: {fileID: 4731265440066429008, guid: 4964b38f3dba21148a31546f306d2a8f,
+    type: 3}
+  shotLocation: {fileID: 5102584572116033954}
+  shots: []
+  shotDirection: 0
 --- !u!1 &5102584572116033954
 GameObject:
   m_ObjectHideFlags: 0
