@@ -8,23 +8,18 @@ public class ShellMovement : MonoBehaviour
     public int speed;
     public int bounceCount;
     public int maxBounce;
-    public const float D = 0.75f;
-    public const float armTime = 0.15f;
-    public float age;
     public Rigidbody shell;
     public GameObject shot;
     public string type = "normal";//to be automatized later
 
-    private bool stillInsideMyTank, insideMyTank;
     private GameObject myTank;
 
     // Start is called before the first frame update
     void Start()
     {
         shell = GetComponent<Rigidbody>();
-        shot = shell.gameObject;
+        shot = gameObject;
         speed = 8;
-        stillInsideMyTank = true;
         float x = Mathf.Sin(shell.rotation.eulerAngles.y * Mathf.PI / 180) * speed;
         float z = Mathf.Cos(shell.rotation.eulerAngles.y * Mathf.PI / 180) * speed;
         shell.velocity = new Vector3(x, 1, z);
@@ -33,10 +28,7 @@ public class ShellMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        age += Time.deltaTime;
-        insideMyTank = false;
-        //if (!armed) CheckArmed();
-        print("1: " + insideMyTank);
+
     }
     /*
     private void LateUpdate()
@@ -68,11 +60,13 @@ public class ShellMovement : MonoBehaviour
         }
         else if (other.CompareTag("Enemy Tank"))
         {
-            if (age < armTime) return;
+            if (other.gameObject == myTank && bounceCount == 0)
+            {
+                return;
+            }
             //explosion and sound
             Destroy(other.gameObject);
             Destroy(shot);
-            print("destroy tank");
         }
         else if (other.CompareTag("Shot"))
         {
@@ -83,11 +77,15 @@ public class ShellMovement : MonoBehaviour
         }
         else if (other.CompareTag("Player Tank"))
         {
-            if (age < armTime) return;
+            if (other.gameObject == myTank && bounceCount == 0)
+            {
+                print("do not destroy");
+                return;
+            }
+            print(myTank.ToString() + ", other: " + other.gameObject.ToString());
             //explosion and sound
             Destroy(other.gameObject);
             Destroy(shot);
-            print("destroy tank");
         }
         else if (other.CompareTag("Hay"))
         {
@@ -119,18 +117,10 @@ public class ShellMovement : MonoBehaviour
         shell.velocity = new Vector3(Mathf.Sin(angle * Mathf.PI / 180) * speed, 0, Mathf.Cos(angle * Mathf.PI / 180) * speed);
     }
 
-    private void CheckArmed()
-    {
-        
-    }
-
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == myTank) insideMyTank = true;
-        print("2: " + insideMyTank + ", 2.1: " + stillInsideMyTank);
-        if (bounceCount == 0)
+        if (bounceCount == 0 && other.gameObject == myTank)
         {
-            //ReallyLateUpdate();
             return;
         }
         if (other.CompareTag("Enemy Tank"))
@@ -145,12 +135,6 @@ public class ShellMovement : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(shot);
         }
-    }
-
-    private void ReallyLateUpdate()
-    {
-        if (!insideMyTank) stillInsideMyTank = false;
-        print("3: " + stillInsideMyTank);
     }
 
     public void SetMyTank(GameObject tank)

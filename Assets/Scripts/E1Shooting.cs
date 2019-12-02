@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankShooting : MonoBehaviour
+public class E1Shooting : MonoBehaviour
 {
-
     public int missileSpeed;
     public int maxShots, shots;
     public float time, shotReloadTime;
@@ -14,11 +13,12 @@ public class TankShooting : MonoBehaviour
     public Rigidbody turret;
     public Rigidbody shellPrefab;
     public GameObject shotLocation;
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //to be  accustomed for each enemy tank
         reloadTime = 0.3f;
         timeSinceShot = 0.2f;
         maxShots = 5;
@@ -27,6 +27,15 @@ public class TankShooting : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        UpdateReload();
+        if (timeSinceShot >= reloadTime && shots < maxShots)
+        {
+
+        }
+    }
+
+    private void UpdateReload()
     {
         time += Time.deltaTime;
         if (time > shotReloadTime)
@@ -38,18 +47,6 @@ public class TankShooting : MonoBehaviour
             }
         }
         timeSinceShot += Time.deltaTime;
-
-        if (timeSinceShot >= reloadTime && shots < maxShots)
-        {
-            //print("ready to fire");
-            if (Input.GetMouseButtonDown(shootButton))
-            {
-                Shoot();
-                shots++;
-                timeSinceShot = 0;
-            }
-        }
-        //else print("just fired");
     }
 
     private void Shoot()
