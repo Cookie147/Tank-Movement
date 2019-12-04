@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44114965, g: 0.4899158, b: 0.5699889, a: 1}
+  m_IndirectSpecularColor: {r: 0.4411499, g: 0.48991597, b: 0.5699891, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8704,7 +8704,7 @@ PrefabInstance:
     - target: {fileID: 5102584571721726181, guid: 9e440fed84d843c4594afda8cd6a3ceb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5102584571721726181, guid: 9e440fed84d843c4594afda8cd6a3ceb,
         type: 3}
@@ -8760,6 +8760,21 @@ PrefabInstance:
         type: 3}
       propertyPath: shotDirection
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 13060795002277312, guid: 9e440fed84d843c4594afda8cd6a3ceb,
+        type: 3}
+      propertyPath: maxShots
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 13060795002277312, guid: 9e440fed84d843c4594afda8cd6a3ceb,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 416228399796474243, guid: 9e440fed84d843c4594afda8cd6a3ceb,
+        type: 3}
+      propertyPath: slerpSpeed
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e440fed84d843c4594afda8cd6a3ceb, type: 3}
@@ -10139,7 +10154,7 @@ GameObject:
   - component: {fileID: 2137969943}
   m_Layer: 0
   m_Name: Level 1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10191,7 +10206,7 @@ PrefabInstance:
     - target: {fileID: 4834253716370814736, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
         type: 3}
       propertyPath: m_Name
-      value: Tank
+      value: Player Tank
       objectReference: {fileID: 0}
     - target: {fileID: 4834253716370814736, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
         type: 3}

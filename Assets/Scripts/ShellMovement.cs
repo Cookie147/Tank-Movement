@@ -30,21 +30,7 @@ public class ShellMovement : MonoBehaviour
     {
 
     }
-    /*
-    private void LateUpdate()
-    {
-        if (!insideMyTank) stillInsideMyTank = false;
-        print("3: " + stillInsideMyTank);
-    }
-    */
-    /**
-     * Checks unit collisions and reacts correspondingly:
-     * wall: bounce if bounce limit has not yet been reached (destroy this shell otherwise)
-     * hay: same as wall for normal type shells, set hay aflame if shell type is 'fast'
-     * tank: destroy tank (and shell)
-     * mine: do nothing as the mine itself checks for unit collisions and triggers if hit by a shell
-     * (shield: destroy shell and weaken shield)
-     */
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Wall") || (other.CompareTag("Hay") && type == "Normal"))
@@ -82,7 +68,6 @@ public class ShellMovement : MonoBehaviour
                 print("do not destroy");
                 return;
             }
-            print(myTank.ToString() + ", other: " + other.gameObject.ToString());
             //explosion and sound
             Destroy(other.gameObject);
             Destroy(shot);

@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  slerpSpeed: 4
   rb: {fileID: 5102584573291682479}
   turret: {fileID: 5102584572384959298}
   playerTank: {fileID: 0}
@@ -457,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521442ecfa155bb408c8aa6b0425433b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxShots: 0
+  maxShots: 5
   shootButton: 0
   rotationSpeed: 100
   reloadTime: 0
