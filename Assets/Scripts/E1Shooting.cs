@@ -87,10 +87,8 @@ public class E1Shooting : MonoBehaviour
                 print(hit.collider.tag + " was hit in direction " + direction.ToString());
                 if(hit.collider.CompareTag("Player Tank"))
                 {
-                    int side = 0;
-                    if (playerTank.transform.position.x > transform.position.x) side = 1;
-                    else side = -1;
-                    shotDirection = (Mathf.Acos(direction.z / direction.magnitude) * Mathf.Rad2Deg * side + 360) % 360;
+                    int side = playerTank.transform.position.x > transform.position.x ? 1 : -1;
+                    shotDirection = (Vector3.Angle(Vector3.forward, direction) * side + 360) % 360;
                     print("player can be accessed easily, the angle is " + shotDirection);
                     return;
                 }
@@ -165,13 +163,19 @@ public class E1Shooting : MonoBehaviour
     private bool Turn()
     {
         float currentAngle = transform.eulerAngles.y;
-        print("current angle is: " + currentAngle);
         if (Mathf.Abs(currentAngle - shotDirection) < inaccurracy) return true;
-        int dir = 0;
-        if (shotDirection - currentAngle > 0) dir = 1;
-        else dir = -1;
-        transform.Rotate(new Vector3(0, 1, 0), rotationSpeed * Time.deltaTime * dir);
+        Vector3 targetDirection = Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward;
+        Vector3 newDirection = Vector3.RotateTowards(transform.eulerAngles, targetDirection, rotationSpeed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
         return false;
+        /*
+        //print("current angle is: " + currentAngle);
+        if (Mathf.Abs(currentAngle - shotDirection) < inaccurracy) return true;
+        int dir = Vector3.SignedAngle(transform.eulerAngles, Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward, Vector3.up) > 0 ? 1 : -1;
+        transform.Rotate(new Vector3(0, 1, 0), rotationSpeed * Time.deltaTime * dir);
+        print("rotated from " + currentAngle + " to " + transform.eulerAngles.y);
+        return false;
+        */
     }
 
     /*
