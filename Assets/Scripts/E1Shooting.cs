@@ -158,24 +158,32 @@ public class E1Shooting : MonoBehaviour
     /*
      * turns towards the "shotDirection" and indicates if the turret points to the intended direction
      * 
-     * @ true if the y component of the rotation is within small bounds equal to "shotDirection"
+     * @ true if the y component of the rotation is, within small bounds "inaccurracy", equal to "shotDirection"
      */
     private bool Turn()
     {
-        float currentAngle = transform.eulerAngles.y;
+        
+        float currentAngle = (transform.eulerAngles.y + 360) % 360;
+        /*
         if (Mathf.Abs(currentAngle - shotDirection) < inaccurracy) return true;
         Vector3 targetDirection = Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward;
-        Vector3 newDirection = Vector3.RotateTowards(transform.eulerAngles, targetDirection, rotationSpeed * Time.deltaTime, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDirection);
+        print("target direction is " + targetDirection.ToString());
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed * Time.deltaTime * Mathf.Deg2Rad, 0.0f);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDirection), rotationSpeed * Time.deltaTime);
+        transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, newDirection, rotationSpeed * Time.deltaTime);
+        //transform.Rotate
         return false;
-        /*
+        //*/
+        //*
         //print("current angle is: " + currentAngle);
         if (Mathf.Abs(currentAngle - shotDirection) < inaccurracy) return true;
-        int dir = Vector3.SignedAngle(transform.eulerAngles, Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward, Vector3.up) > 0 ? 1 : -1;
-        transform.Rotate(new Vector3(0, 1, 0), rotationSpeed * Time.deltaTime * dir);
-        print("rotated from " + currentAngle + " to " + transform.eulerAngles.y);
+        //int dir = Vector3.SignedAngle(transform.eulerAngles, Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward, Vector3.up) > 0 ? 1 : -1;
+        int dir = 0;
+        transform.LookAt(transform.rotation.eulerAngles + new Vector3(0, rotationSpeed * Time.deltaTime, 0));
+        //transform.Rotate(new Vector3(0, 1, 0), rotationSpeed * Time.deltaTime * dir);
+        //print("rotated from " + currentAngle + " to " + transform.eulerAngles.y);
         return false;
-        */
+        //*/
     }
 
     /*
