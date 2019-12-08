@@ -19,7 +19,7 @@ public class E1Shooting : MonoBehaviour
     public GameObject shotLocation;
     public GameObject playerTank;
 
-    private float shotDirection;
+    public float shotDirection;
     private bool randomDirection;
 
 
@@ -84,12 +84,12 @@ public class E1Shooting : MonoBehaviour
             direction.y = 0;
             if(Physics.Raycast(transform.position, direction, out RaycastHit hit, maxRayDistance))
             {
-                print(hit.collider.tag + " was hit in direction " + direction.ToString());
+                //print(hit.collider.tag + " was hit in direction " + direction.ToString());
                 if(hit.collider.CompareTag("Player Tank"))
                 {
                     int side = playerTank.transform.position.x > transform.position.x ? 1 : -1;
                     shotDirection = (Vector3.Angle(Vector3.forward, direction) * side + 360) % 360;
-                    print("player can be accessed easily, the angle is " + shotDirection);
+                    //print("player can be accessed easily, the angle is " + shotDirection);
                     return;
                 }
             }
@@ -105,7 +105,7 @@ public class E1Shooting : MonoBehaviour
             Vector3 directionToCheck = Quaternion.Euler(new Vector3(0, i, 0)) * Vector3.forward;
             print("checking: " + i + " from " + transform.position.ToString());
             //the first raycast that will most likely hit a wall, or maybe a player or mine (ignored so far)
-            if (Physics.Raycast(transform.position, directionToCheck, out RaycastHit hit, Mathf.Infinity))
+            if (Physics.Raycast(transform.position, directionToCheck, out RaycastHit hit, maxRayDistance))
             {
                 //if the player is hit in this direction, that is the best option we can possibly find, so save the angle and end the method
                 if (hit.collider.CompareTag("Player Tank"))
@@ -151,7 +151,7 @@ public class E1Shooting : MonoBehaviour
         else
         {
             shotDirection = bestDirection;
-            print("shotDirection is now: " + shotDirection);
+            //print("shotDirection is now: " + shotDirection);
         }
     }
 
@@ -164,8 +164,15 @@ public class E1Shooting : MonoBehaviour
     {
         
         float currentAngle = (transform.eulerAngles.y + 360) % 360;
-        /*
         if (Mathf.Abs(currentAngle - shotDirection) < inaccurracy) return true;
+
+
+
+        /*
+        Vector3 nD = Vector3.RotateTowards(transform.eulerAngles, targetDir, rotationSpeed * Time.deltaTime, 0.0f);
+        print("nD: " + nD.ToString());
+        transform.rotation = Quaternion.Euler(nD);
+        /*
         Vector3 targetDirection = Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward;
         print("target direction is " + targetDirection.ToString());
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed * Time.deltaTime * Mathf.Deg2Rad, 0.0f);
@@ -176,14 +183,26 @@ public class E1Shooting : MonoBehaviour
         //*/
         //*
         //print("current angle is: " + currentAngle);
-        if (Mathf.Abs(currentAngle - shotDirection) < inaccurracy) return true;
         //int dir = Vector3.SignedAngle(transform.eulerAngles, Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward, Vector3.up) > 0 ? 1 : -1;
-        int dir = 0;
-        transform.LookAt(transform.rotation.eulerAngles + new Vector3(0, rotationSpeed * Time.deltaTime, 0));
+        //int dir = 0;
+
         //transform.Rotate(new Vector3(0, 1, 0), rotationSpeed * Time.deltaTime * dir);
         //print("rotated from " + currentAngle + " to " + transform.eulerAngles.y);
-        return false;
         //*/
+
+
+        //*this code works but it's ugly af
+        //right means clockwise, in that case the variable should be 1 (-1 chagnes the direction the turret will rotate)
+        float right = shotDirection - currentAngle;
+        float left = (currentAngle - shotDirection + 360) % 360;
+        int leftOrRight = right < left ? 1 : -1;
+        print("dir: " + leftOrRight);
+
+        leftOrRight = 1;
+        transform.rotation = Quaternion.Euler(new Vector3(0, rotationSpeed * Time.deltaTime * leftOrRight, 0) + transform.eulerAngles);
+
+        //*/
+        return false;
     }
 
     /*
