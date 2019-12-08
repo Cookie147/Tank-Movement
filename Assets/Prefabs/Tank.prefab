@@ -423,16 +423,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1a526998ac9e544a24acd6bb07a379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missileSpeed: 0
-  maxShots: 0
+  maxShots: 5
   shots: 0
+  maxMines: 2
+  mines: 0
   time: 0
-  shotReloadTime: 0
+  shotReloadTime: 1.2
   shootButton: 0
-  reloadTime: 0
-  timeSinceShot: 0
+  mineButton: 
+  reloadTime: 0.3
+  timeSinceShot: 0.2
   turret: {fileID: 4834253715707464023}
   shellPrefab: {fileID: 4731265440066429008, guid: 4964b38f3dba21148a31546f306d2a8f,
+    type: 3}
+  minePrefab: {fileID: 54403429496280806, guid: 63b2a9ce812377c4e896559c0cf99cf5,
     type: 3}
   shotLocation: {fileID: 4834253715976401847}
 --- !u!1 &4834253716370814748

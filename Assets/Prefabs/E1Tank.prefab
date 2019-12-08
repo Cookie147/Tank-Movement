@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 5102584571721726181}
   m_Layer: 0
   m_Name: E1Tank
-  m_TagString: Untagged
+  m_TagString: Enemy Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -466,8 +466,9 @@ MonoBehaviour:
   turret: {fileID: 5102584572384959298}
   shellPrefab: {fileID: 4731265440066429008, guid: 4964b38f3dba21148a31546f306d2a8f,
     type: 3}
-  shotLocation: {fileID: 5102584572116033954}
   shots: []
+  shotLocation: {fileID: 5102584572116033954}
+  playerTank: {fileID: 0}
   shotDirection: 0
 --- !u!1 &5102584572116033954
 GameObject:
