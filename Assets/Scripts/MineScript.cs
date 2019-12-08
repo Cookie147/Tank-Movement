@@ -17,7 +17,7 @@ public class MineScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 15f;
+        timer = 8f;
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class MineScript : MonoBehaviour
      */
     private void Explode()
     {
-
+        Destroy(mr.gameObject);
     }
 
     /*
@@ -44,15 +44,31 @@ public class MineScript : MonoBehaviour
      */
     private void Flash()
     {
-        if (timer % 1 <= 0.5f)
+        if (timer > 5f) return;
+        if (timer > 2.5f)
         {
-            if(colour == YELLOW)
+            if (timer % 1 <= 0.5f)
             {
                 mr.material = redMat;
+                colour = RED;
             }
-            else if(colour == RED)
+            else
             {
                 mr.material = yellowMat;
+                colour = YELLOW;
+            }
+        }
+        else if(timer > 1f)
+        {
+            if (timer % 0.5f <= 0.25f)
+            {
+                mr.material = redMat;
+                colour = RED;
+            }
+            else
+            {
+                mr.material = yellowMat;
+                colour = YELLOW;
             }
         }
     }
