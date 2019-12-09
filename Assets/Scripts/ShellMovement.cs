@@ -10,7 +10,7 @@ public class ShellMovement : MonoBehaviour
     public int maxBounce;
     public Rigidbody shell;
     public GameObject shot;
-    public string type = "normal";//to be automatized later
+    public string type = "Normal";//to be automatized later
 
     private GameObject myTank;
 
