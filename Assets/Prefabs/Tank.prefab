@@ -39,6 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4834253716370713328}
+  - component: {fileID: 3212743325227572783}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -54,13 +55,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4834253716370814736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23, y: 0, z: 15}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4834253716370713340}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3212743325227572783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4834253716370814736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdd9b5a78259491ba9a9207f4314457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
 --- !u!1 &4834253716370814738
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,11 +440,10 @@ MonoBehaviour:
   maxShots: 5
   shots: 0
   maxMines: 2
-  mines: 0
   time: 0
   shotReloadTime: 1.2
   shootButton: 0
-  mineButton: 
+  mineButton: space
   reloadTime: 0.3
   timeSinceShot: 0.2
   turret: {fileID: 4834253715707464023}
@@ -439,6 +452,7 @@ MonoBehaviour:
   minePrefab: {fileID: 54403429496280806, guid: 63b2a9ce812377c4e896559c0cf99cf5,
     type: 3}
   shotLocation: {fileID: 4834253715976401847}
+  mines: []
 --- !u!1 &4834253716370814748
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +464,6 @@ GameObject:
   - component: {fileID: 4834253716370713340}
   - component: {fileID: 4834253714800740538}
   - component: {fileID: 4834253714800740539}
-  - component: {fileID: 4834253714800740537}
   m_Layer: 0
   m_Name: TankRenderers
   m_TagString: Player Tank
@@ -505,17 +518,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2.5}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &4834253714800740537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4834253716370814748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fdd9b5a78259491ba9a9207f4314457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 4834253714800740538}
-  speed: 5

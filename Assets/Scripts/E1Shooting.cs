@@ -103,7 +103,7 @@ public class E1Shooting : MonoBehaviour
         for (int i = 0; i < 360; i += 5)
         {
             Vector3 directionToCheck = Quaternion.Euler(new Vector3(0, i, 0)) * Vector3.forward;
-            print("checking: " + i + " from " + transform.position.ToString());
+            //print("checking: " + i + " from " + transform.position.ToString());
             //the first raycast that will most likely hit a wall, or maybe a player or mine (ignored so far)
             if (Physics.Raycast(transform.position, directionToCheck, out RaycastHit hit, maxRayDistance))
             {
@@ -193,12 +193,10 @@ public class E1Shooting : MonoBehaviour
 
         //*this code works but it's ugly af
         //right means clockwise, in that case the variable should be 1 (-1 chagnes the direction the turret will rotate)
-        float right = shotDirection - currentAngle;
+        float right = (shotDirection - currentAngle + 360) % 360;
         float left = (currentAngle - shotDirection + 360) % 360;
         int leftOrRight = right < left ? 1 : -1;
-        print("dir: " + leftOrRight);
 
-        leftOrRight = 1;
         transform.rotation = Quaternion.Euler(new Vector3(0, rotationSpeed * Time.deltaTime * leftOrRight, 0) + transform.eulerAngles);
 
         //*/

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TankMovement : MonoBehaviour
 {
-    public Rigidbody rb;
+    //public Rigidbody rb;
     public float speed = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -40,7 +40,7 @@ public class TankMovement : MonoBehaviour
         if (moveDirection != Vector3.zero)
         {
             Quaternion newRotation = Quaternion.LookRotation(moveDirection);
-            rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, newRotation, Time.deltaTime * 8);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 8);
         }
     }
 }

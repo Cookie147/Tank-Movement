@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4411499, g: 0.48991597, b: 0.5699891, a: 1}
+  m_IndirectSpecularColor: {r: 0.44114965, g: 0.4899158, b: 0.5699889, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7137,7 +7137,7 @@ GameObject:
   - component: {fileID: 1600049321}
   m_Layer: 9
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8085,7 +8085,7 @@ GameObject:
   - component: {fileID: 1713012672}
   m_Layer: 9
   m_Name: Play Area
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8700,6 +8700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: E1Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 5102584571721622789, guid: 9e440fed84d843c4594afda8cd6a3ceb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5102584571721726181, guid: 9e440fed84d843c4594afda8cd6a3ceb,
         type: 3}
@@ -10213,16 +10218,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Tank
       objectReference: {fileID: 0}
-    - target: {fileID: 4834253716370814736, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253716370814736, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player Tank
-      objectReference: {fileID: 0}
     - target: {fileID: 4834253716370713328, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10278,72 +10273,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4834253715707464023, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253715707464023, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4834253715707464020, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
         type: 3}
       propertyPath: playground
       value: 
       objectReference: {fileID: 1713012671}
-    - target: {fileID: 4834253716370713340, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
+    - target: {fileID: 4834253715707464020, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
         type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253716370713340, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253716370713340, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253716370713340, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253716370713340, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253714800740538, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253714800740538, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253714800740537, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253715707464024, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: mineButton
-      value: space
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834253715707464024, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
-        type: 3}
-      propertyPath: minePrefab
+      propertyPath: cam
       value: 
-      objectReference: {fileID: 54403429496280806, guid: 63b2a9ce812377c4e896559c0cf99cf5,
-        type: 3}
+      objectReference: {fileID: 534669904}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02414f2ed1e8a4e4da05e9d2e07e9637, type: 3}
 --- !u!1001 &7470582319556380998

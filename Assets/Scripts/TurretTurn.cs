@@ -9,14 +9,15 @@ public class TurretTurn : MonoBehaviour
     public Rigidbody turret;
     public float fieldHeight, fieldWidth;
     public GameObject playground;
+    public Camera cam;
 
-    private Camera cam;
     private int floorMask;
     private const float rayLength = 100f;
 
     // Start is called before the first frame update
     void Start()
     {
+        playground = GameObject.Find("Play Area");
         fieldWidth = playground.transform.lossyScale.x * 10;
         fieldHeight = playground.transform.lossyScale.z * 10;
         cam = Camera.main;
