@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class TankMovement : MonoBehaviour
 {
-    //public Rigidbody rb;
+    public Rigidbody rb;
     public float speed = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
         Movement();
+        rb.velocity = Vector3.zero;
     }
 
     void Movement()
