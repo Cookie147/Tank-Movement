@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TankShooting : MonoBehaviour
 {
-    
-    public int maxShots, shots;
+
+    public int maxShots;
     public int maxMines;
     public float time, shotReloadTime;
     //0 is the primary mouse button, 1 the secondary, 2 the middle one
@@ -16,6 +16,7 @@ public class TankShooting : MonoBehaviour
     public Rigidbody shellPrefab;
     public Rigidbody minePrefab;
     public GameObject shotLocation;
+    public GameObject[] shots;
     public GameObject[] mines;
     
 
@@ -23,23 +24,16 @@ public class TankShooting : MonoBehaviour
     void Start()
     {
         mines = new GameObject[maxMines];
+        shots = new GameObject[maxShots];
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-        if (time > shotReloadTime)
-        {
-            if (shots > 0)
-            {
-                --shots;
-                time %= shotReloadTime;
-            }
-        }
         timeSinceShot += Time.deltaTime;
 
-        if (timeSinceShot >= reloadTime && shots < maxShots)
+        if (timeSinceShot >= reloadTime && CountShots() < maxShots)
         {
             //print("ready to fire");
             if (Input.GetMouseButtonDown(shootButton))
@@ -59,7 +53,6 @@ public class TankShooting : MonoBehaviour
     private void Shoot()
     {
         //animation and sounds
-        ++shots;
         Rigidbody shot = Instantiate(shellPrefab, shotLocation.transform.position, turret.transform.rotation);
         shot.GetComponent<ShellMovement>().SetMyTank(GetComponentInParent<BoxCollider>().gameObject);
     }
@@ -79,6 +72,19 @@ public class TankShooting : MonoBehaviour
                 return;
             }
         }
+    }
+
+    /*
+     * counts how many shots this tank has fired are still existing
+     */
+    private int CountShots()
+    {
+        int c = 0;
+        foreach (GameObject g in shots)
+        {
+            if (g) ++c;
+        }
+        return c;
     }
 
     /*
