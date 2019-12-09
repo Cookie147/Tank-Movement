@@ -65,7 +65,6 @@ public class ShellMovement : MonoBehaviour
         {
             if (other.gameObject == myTank && bounceCount == 0)
             {
-                print("do not destroy");
                 return;
             }
             //explosion and sound
@@ -74,7 +73,7 @@ public class ShellMovement : MonoBehaviour
         }
         else if (other.CompareTag("Hay"))
         {
-
+            print("hay was hit");
         }
     }
 
