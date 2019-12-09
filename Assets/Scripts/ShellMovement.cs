@@ -8,16 +8,17 @@ public class ShellMovement : MonoBehaviour
     public int speed;
     public int bounceCount;
     public int maxBounce;
-    public const float D = 0.75f;
     public Rigidbody shell;
     public GameObject shot;
     public string type = "normal";//to be automatized later
+
+    private GameObject myTank;
 
     // Start is called before the first frame update
     void Start()
     {
         shell = GetComponent<Rigidbody>();
-        shot = shell.gameObject;
+        shot = gameObject;
         speed = 8;
         float x = Mathf.Sin(shell.rotation.eulerAngles.y * Mathf.PI / 180) * speed;
         float z = Mathf.Cos(shell.rotation.eulerAngles.y * Mathf.PI / 180) * speed;
@@ -27,17 +28,9 @@ public class ShellMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    /**
-     * Checks unit collisions and reacts correspondingly:
-     * wall: bounce if bounce limit has not yet been reached (destroy this shell otherwise)
-     * hay: same as wall for normal type shells, set hay aflame if shell type is 'fast'
-     * tank: destroy tank (and shell)
-     * mine: do nothing as the mine itself checks for unit collisions and triggers if hit by a shell
-     * (shield: destroy shell and weaken shield)
-     */
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Wall") || (other.CompareTag("Hay") && type == "Normal"))
@@ -49,22 +42,39 @@ public class ShellMovement : MonoBehaviour
                 return;
             }
             Bounce(other);
-            
-        }
-        else if(other.CompareTag("Hay"))
-        {
 
         }
-        else if(other.CompareTag("Enemy Tank"))
+        else if (other.CompareTag("Enemy Tank"))
         {
-            
+            if (other.gameObject == myTank && bounceCount == 0)
+            {
+                return;
+            }
+            //explosion and sound
+            Destroy(other.gameObject);
+            Destroy(shot);
         }
-        else if(other.CompareTag("Shot"))
+        else if (other.CompareTag("Shot"))
         {
-            //some animation
+            //some animation and sound
 
             Destroy(other);
             Destroy(shot);
+        }
+        else if (other.CompareTag("Player Tank"))
+        {
+            if (other.gameObject == myTank && bounceCount == 0)
+            {
+                print("do not destroy");
+                return;
+            }
+            //explosion and sound
+            Destroy(other.gameObject);
+            Destroy(shot);
+        }
+        else if (other.CompareTag("Hay"))
+        {
+
         }
     }
 
@@ -90,5 +100,30 @@ public class ShellMovement : MonoBehaviour
         }
         shot.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
         shell.velocity = new Vector3(Mathf.Sin(angle * Mathf.PI / 180) * speed, 0, Mathf.Cos(angle * Mathf.PI / 180) * speed);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (bounceCount == 0 && other.gameObject == myTank)
+        {
+            return;
+        }
+        if (other.CompareTag("Enemy Tank"))
+        {
+            //explosion and sound
+            Destroy(other.gameObject);
+            Destroy(shot);
+        }
+        else if (other.CompareTag("Player Tank"))
+        {
+            //explosion and sound
+            Destroy(other.gameObject);
+            Destroy(shot);
+        }
+    }
+
+    public void SetMyTank(GameObject tank)
+    {
+        myTank = tank;
     }
 }
