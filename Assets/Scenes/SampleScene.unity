@@ -119,6 +119,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 269176675}
     m_Modifications:
+    - target: {fileID: 5041637718600754913, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
+        type: 3}
+      propertyPath: m_Name
+      value: Light Cube (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5041637718600754918, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,11 +178,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5041637718600754913, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
-        type: 3}
-      propertyPath: m_Name
-      value: Light Cube (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e5dc2619dc774f7abeabaedcc2a4293, type: 3}
@@ -686,6 +686,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 269176675}
     m_Modifications:
+    - target: {fileID: 5041637718600754913, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
+        type: 3}
+      propertyPath: m_Name
+      value: Light Cube (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 5041637718600754918, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -740,11 +745,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5041637718600754913, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
-        type: 3}
-      propertyPath: m_Name
-      value: Light Cube (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e5dc2619dc774f7abeabaedcc2a4293, type: 3}
@@ -853,6 +853,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 269176675}
     m_Modifications:
+    - target: {fileID: 5041637718600754913, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
+        type: 3}
+      propertyPath: m_Name
+      value: Light Cube (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5041637718600754918, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -907,11 +912,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5041637718600754913, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
-        type: 3}
-      propertyPath: m_Name
-      value: Light Cube (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e5dc2619dc774f7abeabaedcc2a4293, type: 3}
@@ -1003,6 +1003,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 269176675}
     m_Modifications:
+    - target: {fileID: 5041637718600754913, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
+        type: 3}
+      propertyPath: m_Name
+      value: Light Cube
+      objectReference: {fileID: 0}
     - target: {fileID: 5041637718600754918, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1057,11 +1062,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5041637718600754913, guid: 9e5dc2619dc774f7abeabaedcc2a4293,
-        type: 3}
-      propertyPath: m_Name
-      value: Light Cube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e5dc2619dc774f7abeabaedcc2a4293, type: 3}
@@ -1407,7 +1407,7 @@ PrefabInstance:
     - target: {fileID: 4834253716370713328, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4834253716370713328, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
         type: 3}
