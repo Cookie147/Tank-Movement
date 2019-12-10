@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{80C1E085-CBE9-DCF2-B2F9-8ED0F68032C5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/QuickOutline/Readme.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainMenu.cs">
     <Files>
       <File FileName="Assets/Scripts/TankMovement.cs" Line="18" Column="20" />
-      <File FileName="Assets/QuickOutline/Readme.txt" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MainMenu.cs" Line="14" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e3ca4141-f4e2-4a78-aa44-d8b87e21371a" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1299e3af-5255-40d9-bca7-a70f1ef02aa4" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
