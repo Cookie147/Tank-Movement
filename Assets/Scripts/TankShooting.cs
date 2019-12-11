@@ -33,21 +33,16 @@ public class TankShooting : MonoBehaviour
         time += Time.deltaTime;
         timeSinceShot += Time.deltaTime;
 
-        if (timeSinceShot >= reloadTime && CountShots() < maxShots)
+        if (timeSinceShot >= reloadTime && Count(shots) < maxShots && Input.GetMouseButtonDown(shootButton))
         {
-            //print("ready to fire");
-            if (Input.GetMouseButtonDown(shootButton))
-            {
-                Shoot();
-                timeSinceShot = 0;
-            }
+            Shoot();
+            timeSinceShot = 0;
         }
 
-        if(CountMines() < maxMines && Input.GetKeyDown(mineButton))
+        if(Count(mines) < maxMines && Input.GetKeyDown(mineButton))
         {
             LayMine();
         }
-        
     }
 
     private void Shoot()
@@ -55,6 +50,14 @@ public class TankShooting : MonoBehaviour
         //animation and sounds
         Rigidbody shot = Instantiate(shellPrefab, shotLocation.transform.position, turret.transform.rotation);
         shot.GetComponent<ShellMovement>().SetMyTank(GetComponentInParent<BoxCollider>().gameObject);
+        for(int i=0; i<maxShots; ++i)
+        {
+            if(shots[i] == null)
+            {
+                shots[i] = shot.gameObject;
+                break;
+            }
+        }
     }
 
     /*
@@ -69,31 +72,20 @@ public class TankShooting : MonoBehaviour
             if (!mines[i])
             {
                 mines[i] = mine;
-                return;
+                break;
             }
         }
     }
 
     /*
-     * counts how many shots this tank has fired are still existing
+     * counts how many non-null objects are in the given array
+     * 
+     * @param arr array of GameObjects
      */
-    private int CountShots()
+    private int Count(GameObject[] arr)
     {
         int c = 0;
-        foreach (GameObject g in shots)
-        {
-            if (g) ++c;
-        }
-        return c;
-    }
-
-    /*
-     * counts how many mines this tank has laid are still existing
-     */
-    private int CountMines()
-    {
-        int c = 0;
-        foreach(GameObject g in mines)
+        foreach (GameObject g in arr)
         {
             if (g) ++c;
         }

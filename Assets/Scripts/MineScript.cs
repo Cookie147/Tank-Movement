@@ -96,7 +96,6 @@ public class MineScript : MonoBehaviour
         if (!(other.CompareTag("Wall") || other.CompareTag("Ground")))
         {
             objectsInRange.Add(other.gameObject);
-            print(other.tag + " was added to the array");
         }
     }
 
