@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4570347967337214199}
   - component: {fileID: 8062376338724573258}
   - component: {fileID: 400853755667616144}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -89,5 +89,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 1, z: 0.9}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

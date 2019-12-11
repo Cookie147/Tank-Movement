@@ -114,9 +114,12 @@ public class E1Movement : MonoBehaviour
         if (collision.collider.CompareTag("Wall") || collision.collider.CompareTag("Hay"))
         {
             moving = false;
-            //IMPORTANT: test wall hits in "OnCollisionStay", not Enter
-            //with "Enter" it can happen that the tank will get a new direction that leads into the wall again. Since it already touches the wall, this won't trigger a new
-            //collision, thus the tank will just stay there and try to move into the wall.
+            /*
+             * IMPORTANT: test wall hits in "OnCollisionStay", not Enter
+             * with "Enter" it can happen that the tank will get a new direction that leads into the wall again. Since it 
+             * already touches the wall, this won't trigger a new
+             * collision, thus the tank will just stay there and try to move into the wall.
+             */
         }
     }
 
