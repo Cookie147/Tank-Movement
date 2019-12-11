@@ -2,12 +2,13 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainMenu.cs">
     <Files>
       <File FileName="Assets/Scripts/TankMovement.cs" Line="18" Column="20" />
-      <File FileName="Assets/Scripts/MainMenu.cs" Line="14" Column="31" />
+      <File FileName="Assets/Scripts/MainMenu.cs" Line="8" Column="34" />
+      <File FileName="Assets/Scripts/Difficulty.cs" Line="13" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1299e3af-5255-40d9-bca7-a70f1ef02aa4" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="772af1f9-d53d-43e8-a7b4-9d7898a9e1a4" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
