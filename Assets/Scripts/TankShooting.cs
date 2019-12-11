@@ -91,4 +91,13 @@ public class TankShooting : MonoBehaviour
         }
         return c;
     }
+
+    /*
+     * for different difficulties the player tank has differently many shots at its disposal
+     * via this function the game menu will be able to change this
+     */
+    public void SetMaxShots(int newMax)
+    {
+        maxShots = newMax;
+    }
 }
