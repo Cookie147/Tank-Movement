@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Storage : MonoBehaviour
 {
+    public int maxShots;
+
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        maxShots = 5;
     }
     
-    public int maxShots;
 
     public void setNumShots(int numShots)
     {

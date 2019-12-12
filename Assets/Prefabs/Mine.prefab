@@ -116,6 +116,8 @@ MonoBehaviour:
   yellowMat: {fileID: 2100000, guid: 93cfa5e107f8d164cb5a8078abaaef49, type: 2}
   redMat: {fileID: 2100000, guid: bc1efb2e9eafd2a408a87669654d575d, type: 2}
   objectsInRange: []
+  tankExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
+  shellExplosionPrefab: {fileID: 195792, guid: 1911d89758d97cc4898d240e9e2545f4, type: 3}
 --- !u!54 &54403429496280806
 Rigidbody:
   m_ObjectHideFlags: 0

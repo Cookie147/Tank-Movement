@@ -23,8 +23,8 @@ public class TankShooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         maxShots = GameObject.Find("Storage").GetComponent<Storage>().getNumShots();
-        if (maxShots == 0) maxShots = 5;//if nothing was chosen in the menu, the default is hard mode
         mines = new GameObject[maxMines];
         shots = new GameObject[maxShots];
     }
