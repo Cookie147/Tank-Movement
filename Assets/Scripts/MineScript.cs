@@ -57,12 +57,13 @@ public class MineScript : MonoBehaviour
             if (g.CompareTag("Mine"))
             {
                 g.SendMessage("Explode");
+                Destroy(g);
             }
             else if (g.CompareTag("Hay"))
             {
                 g.SendMessage("SetOnFire");
+                Destroy(g, 10);
             }
-            Destroy(g);
         }
         Destroy(mr.gameObject);
     }
