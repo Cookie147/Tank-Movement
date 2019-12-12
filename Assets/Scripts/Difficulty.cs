@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class Difficulty : MonoBehaviour
 {
-    public int difficulty;
-    public GameObject playerTank;
+    public int numShots;
+    public GameObject storage;
+
+    public void Start()
+    {
+        storage = GameObject.Find("Storage");
+    }
 
     public void setEasy()
     {
-        playerTank = GameObject.Find("Player Tank");
-        difficulty = 1;
+        storage.GetComponent<Storage>().setNumShots(100);
     }
 
-    public int getDifficulty()
+    public void setMedium()
     {
-        return difficulty;
+        storage.GetComponent<Storage>().setNumShots(10);
+    }
+
+    public void setHard()
+    {
+        storage.GetComponent<Storage>().setNumShots(5);
     }
 }

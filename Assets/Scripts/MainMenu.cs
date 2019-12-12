@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject playerTank;
-    public GameObject d;
+    public Difficulty d;
 
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //playerTank = GameObject.Find("Player Tank");
-        //change color of tank
-        //int difficulty = d.getDifficulty();
-        //playerTank.sendMessage("setMaxShots", difficulty);
+        //Debug.Log("Yes");
+        //float numShots = d.getDifficulty();
+        //playerTank.SendMessage("setMaxShots", numShots);
     }
 
     public void QuitGame()

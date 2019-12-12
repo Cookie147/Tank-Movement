@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{80C1E085-CBE9-DCF2-B2F9-8ED0F68032C5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TankShooting.cs">
     <Files>
       <File FileName="Assets/Scripts/TankMovement.cs" Line="18" Column="20" />
-      <File FileName="Assets/Scripts/MainMenu.cs" Line="8" Column="34" />
-      <File FileName="Assets/Scripts/Difficulty.cs" Line="13" Column="24" />
+      <File FileName="Assets/Scripts/MainMenu.cs" Line="17" Column="11" />
+      <File FileName="Assets/Scripts/Difficulty.cs" Line="27" Column="47" />
+      <File FileName="Assets/Scripts/Storage.cs" Line="16" Column="25" />
+      <File FileName="Assets/Scripts/TankShooting.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="772af1f9-d53d-43e8-a7b4-9d7898a9e1a4" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="828e7df7-7ddf-4890-99c0-dede146bec2c" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
