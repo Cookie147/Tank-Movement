@@ -14,6 +14,10 @@ public class ShellMovement : MonoBehaviour
     public Rigidbody shell;
     public GameObject shot;
     public string type = "Normal";//to be automatized later
+    public GameObject tankExplosionPrefab;
+
+    private AudioSource explosionAudio;
+    private ParticleSystem explosionParticles;
 
     private GameObject myTank;
 
@@ -29,6 +33,16 @@ public class ShellMovement : MonoBehaviour
         shell.velocity = (new Vector3(x, 1, z)).normalized * speed;
         v = shell.velocity;
         angle = transform.eulerAngles.y;
+
+        //prepare animations and sounds
+        // Instantiate the explosion prefab and get a reference to the particle system on it.
+        explosionParticles = Instantiate(tankExplosionPrefab).GetComponent<ParticleSystem>();
+
+        // Get a reference to the audio source on the instantiated prefab.
+        explosionAudio = explosionParticles.GetComponent<AudioSource>();
+
+        // Disable the prefab so it can be activated when it's required.
+        explosionParticles.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -69,7 +83,7 @@ public class ShellMovement : MonoBehaviour
             {
                 return;
             }
-            //explosion and sound
+            DestroyTank(other);
             Destroy(other.gameObject);
             Destroy(shot);
         }
@@ -86,7 +100,7 @@ public class ShellMovement : MonoBehaviour
             {
                 return;
             }
-            //explosion and sound
+            DestroyTank(other);
             Destroy(other.gameObject);
             Destroy(shot);
         }
@@ -179,6 +193,20 @@ public class ShellMovement : MonoBehaviour
      * 
      * @param tank the tank that has shot the parent of this script instance
      */
+
+    private void DestroyTank(Collider other)
+    {
+        // Move the instantiated explosion prefab to the tank's position and turn it on.
+        explosionParticles.transform.position = other.transform.position;
+        explosionParticles.gameObject.SetActive(true);
+
+        // Play the particle system of the tank exploding.
+        explosionParticles.Play();
+
+        // Play the tank explosion sound effect.
+        explosionAudio.Play();
+    }
+
     public void SetMyTank(GameObject tank)
     {
         myTank = tank;

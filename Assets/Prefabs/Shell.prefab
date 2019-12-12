@@ -111,10 +111,12 @@ MonoBehaviour:
   speed: 0
   bounceCount: 0
   maxBounce: 1
-  newAngle: 0
+  angle: 0
+  v: {x: 0, y: 0, z: 0}
   shell: {fileID: 4731265440066429008}
   shot: {fileID: 924155453677810121}
   type: normal
+  tankExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
 --- !u!136 &1791354843688818029
 CapsuleCollider:
   m_ObjectHideFlags: 0
