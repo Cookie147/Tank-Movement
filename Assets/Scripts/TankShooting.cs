@@ -7,11 +7,11 @@ public class TankShooting : MonoBehaviour
 
     public int maxShots;
     public int maxMines;
-    public float time, shotReloadTime;
+    public float shotReloadTime;
     //0 is the primary mouse button, 1 the secondary, 2 the middle one
     public int shootButton = 0;
     public string mineButton;
-    public float reloadTime, timeSinceShot;
+    public float timeSinceShot;
     public Rigidbody turret;
     public Rigidbody shellPrefab;
     public Rigidbody minePrefab;
@@ -25,6 +25,7 @@ public class TankShooting : MonoBehaviour
     {
         maxShots = GameObject.Find("Storage").GetComponent<Storage>().getNumShots();
         if (maxShots == 0) maxShots = 5;
+        print(maxShots);
         mines = new GameObject[maxMines];
         shots = new GameObject[maxShots];
     }
@@ -32,13 +33,12 @@ public class TankShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        timeSinceShot += Time.deltaTime;
+        timeSinceShot -= Time.deltaTime;
 
-        if (timeSinceShot >= reloadTime && Count(shots) < maxShots && Input.GetMouseButtonDown(shootButton))
+        if (timeSinceShot < 0 && Count(shots) < maxShots && Input.GetMouseButtonDown(shootButton))
         {
             Shoot();
-            timeSinceShot = 0;
+            timeSinceShot = shotReloadTime;
         }
 
         if(Count(mines) < maxMines && Input.GetKeyDown(mineButton))

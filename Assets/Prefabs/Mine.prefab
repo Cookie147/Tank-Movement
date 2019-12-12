@@ -118,6 +118,7 @@ MonoBehaviour:
   objectsInRange: []
   tankExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
   shellExplosionPrefab: {fileID: 195792, guid: 1911d89758d97cc4898d240e9e2545f4, type: 3}
+  coll: {fileID: 7470582317727393098}
 --- !u!54 &54403429496280806
 Rigidbody:
   m_ObjectHideFlags: 0

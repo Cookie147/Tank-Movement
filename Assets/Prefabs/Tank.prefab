@@ -458,11 +458,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxShots: 5
   maxMines: 2
-  time: 0
-  shotReloadTime: 1.2
+  shotReloadTime: 0.4
   shootButton: 0
   mineButton: space
-  reloadTime: 0.3
   timeSinceShot: 0.2
   turret: {fileID: 4834253715707464023}
   shellPrefab: {fileID: 4731265440066429008, guid: 4964b38f3dba21148a31546f306d2a8f,
@@ -472,7 +470,6 @@ MonoBehaviour:
   shotLocation: {fileID: 4834253715976401847}
   shots: []
   mines: []
-  tankExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
 --- !u!1 &4834253716370814748
 GameObject:
   m_ObjectHideFlags: 0
