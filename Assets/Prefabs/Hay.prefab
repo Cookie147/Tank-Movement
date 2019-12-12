@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7717836338623354771}
   - component: {fileID: 4293391218829588270}
   - component: {fileID: 5901543300994447092}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hay
   m_TagString: Hay
   m_Icon: {fileID: 0}
@@ -86,8 +86,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7256662147323874319}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 1, z: 0.9}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

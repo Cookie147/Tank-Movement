@@ -17,11 +17,11 @@ public class TurretTurn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playground = GameObject.Find("Play Area");
+        if(!playground) playground = GameObject.Find("Play Area");
+        if(!cam) cam = Camera.main;
+        if(floorMask == 0) floorMask = LayerMask.GetMask("Floor");
         fieldWidth = playground.transform.lossyScale.x * 10;
         fieldHeight = playground.transform.lossyScale.z * 10;
-        cam = Camera.main;
-        floorMask = LayerMask.GetMask("Floor");
     }
 
     // Update is called once per frame
