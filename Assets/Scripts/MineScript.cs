@@ -20,6 +20,13 @@ public class MineScript : MonoBehaviour
     private const int YELLOW = 0;
     private const int RED = 1;
 
+    public GameObject tankExplosionPrefab;
+    public GameObject shellExplosionPrefab;
+
+    private AudioSource tankExplosionAudio;
+    private ParticleSystem tankParticles;
+    private ParticleSystem shellParticles;
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +61,11 @@ public class MineScript : MonoBehaviour
         exploded = true;
         foreach(GameObject g in objectsInRange)
         {
-            if (g.CompareTag("Mine"))
+            if(g.CompareTag("Player Tank") || g.CompareTag("Enemy Tank"))
+            {
+
+            }
+            else if (g.CompareTag("Mine"))
             {
                 g.SendMessage("Explode");
                 Destroy(g);
@@ -117,6 +128,18 @@ public class MineScript : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         objectsInRange.Remove(other.gameObject);
+    }
+
+    public void DestroyTank(GameObject other)
+    {
+        tankParticles.transform.position = other.transform.position;
+        tankParticles.gameObject.SetActive(true);
+
+        tankParticles.Play();
+
+        tankExplosionAudio.Play();
+        Destroy(tankParticles);
+        Destroy(other);
     }
 
     /*

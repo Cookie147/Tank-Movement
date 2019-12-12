@@ -97,12 +97,13 @@ public class ShellMovement : MonoBehaviour
             {
                 return;
             }
+            //other.GetComponent<TankShooting>().DestroyTank(other.gameObject);
             DestroyTank(other.gameObject);
             DestroyShot(shot);
         }
         else if (other.CompareTag("Hay"))
         {
-            print("hay was hit");
+            Destroy(shot);
         }
     }
 
@@ -148,7 +149,6 @@ public class ShellMovement : MonoBehaviour
         }
         if (other.CompareTag("Enemy Tank"))
         {
-            //explosion and sound
             DestroyTank(other.gameObject);
             DestroyShot(shot);
         }
@@ -180,7 +180,7 @@ public class ShellMovement : MonoBehaviour
         }
     }*/
 
-    private void DestroyTank(GameObject other)
+    public void DestroyTank(GameObject other)
     {
         tankParticles.transform.position = other.transform.position;
         tankParticles.gameObject.SetActive(true);
@@ -188,16 +188,18 @@ public class ShellMovement : MonoBehaviour
         tankParticles.Play();
 
         tankExplosionAudio.Play();
-        Destroy(other.gameObject);
+        Destroy(tankParticles);
+        Destroy(other);
     }
 
-    private void DestroyShot(GameObject other)
+    public void DestroyShot(GameObject other)
     {
         shellParticles.transform.position = other.transform.position;
         shellParticles.gameObject.SetActive(true);
 
         shellParticles.Play();
-        Destroy(other.gameObject);
+        Destroy(shellParticles);
+        Destroy(other);
     }
 
     /*
