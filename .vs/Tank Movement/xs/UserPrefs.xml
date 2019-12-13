@@ -1,14 +1,15 @@
 ﻿<Properties StartupConfiguration="{80C1E085-CBE9-DCF2-B2F9-8ED0F68032C5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/E1Shooting.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Storage.cs">
     <Files>
-      <File FileName="Assets/Scripts/TankMovement.cs" Line="18" Column="20" />
-      <File FileName="Assets/Scripts/MainMenu.cs" />
-      <File FileName="Assets/Scripts/Difficulty.cs" />
-      <File FileName="Assets/Scripts/TankShooting.cs" />
-      <File FileName="Assets/Scripts/MineScript.cs" />
-      <File FileName="Assets/Scripts/Hay.cs" Line="9" Column="1" />
-      <File FileName="Assets/Scripts/E1Shooting.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Storage.cs" Line="24" Column="6" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Tank Movement" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
