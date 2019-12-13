@@ -159,27 +159,6 @@ public class ShellMovement : MonoBehaviour
         }
     }
 
-    /*
-     * calculates the angle the shot will have after hitting terrain
-     * 
-     * @var newAngle will contain the angle this shot should have (with respect to the y-axis) after hitting the next terrain
-     *
-    public void SetBounceAngle()
-    {
-        int layerMask = 1 << 10;
-        float dx = Mathf.Cos(transform.eulerAngles.y);
-        float dz = Mathf.Sin(transform.eulerAngles.y);
-        Vector3 direction = new Vector3(dx, 0, dz);
-        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, maxRayDistance, layerMask))
-        {
-            Vector3 newDirection = Vector3.Reflect(direction, hit.normal);
-
-            newAngle = Mathf.Atan(newDirection.z / newDirection.x) * Mathf.Rad2Deg;
-            hit.transform.SetPositionAndRotation(new Vector3(hit.transform.position.x, 2, hit.transform.position.z - 1), hit.transform.rotation);
-            print("angle at the beginning is " + transform.eulerAngles.y + ", the angle after the terrain hit will be " + newAngle + ", the normal vector is: " + hit.normal.ToString());
-        }
-    }*/
-
     public void DestroyTank(GameObject other)
     {
         tankParticles.transform.position = other.transform.position;

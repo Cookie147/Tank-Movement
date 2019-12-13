@@ -34,6 +34,15 @@ public class MineScript : MonoBehaviour
         timer = 20f;
         colliderRadius = GetComponent<SphereCollider>().radius;
         mineSize = transform.localScale.x;
+
+        //get all animation components
+        tankParticles = Instantiate(tankExplosionPrefab).GetComponent<ParticleSystem>();
+        shellParticles = Instantiate(shellExplosionPrefab).GetComponent<ParticleSystem>();
+
+        tankExplosionAudio = tankExplosionPrefab.GetComponent<AudioSource>();
+
+        tankParticles.gameObject.SetActive(false);
+        shellParticles.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -63,20 +72,24 @@ public class MineScript : MonoBehaviour
         {
             if(g.CompareTag("Player Tank") || g.CompareTag("Enemy Tank"))
             {
-
+                DestroyTank(g);
             }
             else if (g.CompareTag("Mine"))
             {
                 g.SendMessage("Explode");
-                Destroy(g);
             }
             else if (g.CompareTag("Hay"))
             {
                 g.SendMessage("SetOnFire");
+                //let ir burn 10s, then destroy it
                 Destroy(g, 10);
             }
+            else if (g.CompareTag("Shot"))
+            {
+                Destroy(g);
+            }
         }
-        Destroy(mr.gameObject);
+        DestroyTank(gameObject);
     }
 
     /*
@@ -101,7 +114,7 @@ public class MineScript : MonoBehaviour
                 if (fenceTime < 0) return true;
             }
             else if (g.CompareTag("Shot") && 
-                     Vector3.Distance(transform.position, new Vector3(g.transform.position.x, 0, g.transform.position.z)) < mineSize)
+                     Vector3.Distance(transform.position, new Vector3(g.transform.position.x, 0, g.transform.position.z)) < mineSize * 1.5)
             {
                 Explode();
             }
@@ -130,6 +143,12 @@ public class MineScript : MonoBehaviour
         objectsInRange.Remove(other.gameObject);
     }
 
+    /*
+     * destroys the given Object using the tank explosion
+     * mines explode with the same animation as tanks, hence it can be called to destroy mines too
+     * 
+     * @param other the GameObject you want to have destroyed, usually a tank or a mine
+     */
     public void DestroyTank(GameObject other)
     {
         tankParticles.transform.position = other.transform.position;
