@@ -10,23 +10,22 @@ public class Hay : MonoBehaviour
 
     void Start()
     {
-
         //get all animation components
         fireParticles = Instantiate(firePrefab).GetComponent<ParticleSystem>();
-
         fireParticles.gameObject.SetActive(false);
     }
 
     public void SetOnFire()
     {
-        fireParticles.transform.position = transform.position;
+
+        //fireParticles.transform.position = gameObject.transform.position;
+        fireParticles.transform.position = transform.position + new Vector3(0,2,-0.5f);
         fireParticles.gameObject.SetActive(true);
 
         fireParticles.Play();
-
         //tankExplosionAudio.Play();
 
-        Destroy(fireParticles);
-        Destroy(gameObject);
+        Destroy(fireParticles, 7);
+        Destroy(gameObject, 7);
     }
 }

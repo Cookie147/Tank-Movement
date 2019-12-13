@@ -81,8 +81,6 @@ public class MineScript : MonoBehaviour
             else if (g.CompareTag("Hay"))
             {
                 g.SendMessage("SetOnFire");
-                //let ir burn 10s, then destroy it
-                Destroy(g, 10);
             }
             else if (g.CompareTag("Shot"))
             {
