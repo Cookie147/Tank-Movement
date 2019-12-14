@@ -28,7 +28,7 @@ public class E1Shooting : MonoBehaviour
     {
         //to be  accustomed for each enemy tank
         reloadTime = 1f;
-        playerTank = GameObject.Find("Player Tank");
+        playerTank = GameObject.Find("Tank");
         shots = new Rigidbody[maxShots];
         GetNewShotDirection(1);
     }

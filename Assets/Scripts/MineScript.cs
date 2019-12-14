@@ -22,6 +22,8 @@ public class MineScript : MonoBehaviour
 
     public GameObject tankExplosionPrefab;
     public GameObject shellExplosionPrefab;
+    GameObject tankExplosion;
+    GameObject shellExplosion;
 
     private AudioSource tankExplosionAudio;
     private ParticleSystem tankParticles;
@@ -36,11 +38,11 @@ public class MineScript : MonoBehaviour
         mineSize = transform.localScale.x;
 
         //get all animation components
-        tankParticles = Instantiate(tankExplosionPrefab).GetComponent<ParticleSystem>();
-        shellParticles = Instantiate(shellExplosionPrefab).GetComponent<ParticleSystem>();
-
-        tankExplosionAudio = tankExplosionPrefab.GetComponent<AudioSource>();
-
+        tankExplosion = Instantiate(tankExplosionPrefab);
+        shellExplosion = Instantiate(shellExplosionPrefab);
+        tankParticles = tankExplosion.GetComponent<ParticleSystem>();
+        shellParticles = shellExplosion.GetComponent<ParticleSystem>();
+        tankExplosionAudio = tankExplosion.GetComponent<AudioSource>();
         tankParticles.gameObject.SetActive(false);
         shellParticles.gameObject.SetActive(false);
     }
@@ -151,12 +153,11 @@ public class MineScript : MonoBehaviour
     {
         tankParticles.transform.position = other.transform.position;
         tankParticles.gameObject.SetActive(true);
-
         tankParticles.Play();
-
         tankExplosionAudio.Play();
-        //Destroy(tankParticles);
-        //Destroy(other);
+        //destroy the explosion with a small delay so it can play properly
+        Destroy(tankExplosion, 1f);
+        Destroy(other);
     }
 
     /*

@@ -16,6 +16,8 @@ public class ShellMovement : MonoBehaviour
     public string type = "Normal";//to be automatized later
     public GameObject tankExplosionPrefab;
     public GameObject shellExplosionPrefab;
+    GameObject tankExplosion;
+    GameObject shellExplosion;
 
     private GameObject myTank;
     private AudioSource tankExplosionAudio;
@@ -36,11 +38,11 @@ public class ShellMovement : MonoBehaviour
         angle = transform.eulerAngles.y;
 
         //get all animation components
-        tankParticles = Instantiate(tankExplosionPrefab).GetComponent<ParticleSystem>();
-        shellParticles = Instantiate(shellExplosionPrefab).GetComponent<ParticleSystem>();
-
-        tankExplosionAudio = tankExplosionPrefab.GetComponent<AudioSource>();
-
+        tankExplosion = Instantiate(tankExplosionPrefab);
+        shellExplosion = Instantiate(shellExplosionPrefab);
+        tankParticles = tankExplosion.GetComponent<ParticleSystem>();
+        shellParticles = shellExplosion.GetComponent<ParticleSystem>();
+        tankExplosionAudio = tankExplosion.GetComponent<AudioSource>();
         tankParticles.gameObject.SetActive(false);
         shellParticles.gameObject.SetActive(false);
     }
@@ -69,7 +71,7 @@ public class ShellMovement : MonoBehaviour
             ++bounceCount;
             if (bounceCount > maxBounce)
             {
-                DestroyShot(shot);
+                DestroyShot();
             }
             else
             {
@@ -84,12 +86,12 @@ public class ShellMovement : MonoBehaviour
                 return;
             }
             DestroyTank(other.gameObject);
-            DestroyShot(shot);
+            DestroyShot();
         }
         else if (other.CompareTag("Shot"))
         {
-            DestroyShot(other.gameObject);
-            DestroyShot(shot);
+            other.SendMessage("DestroyShot");
+            DestroyShot();
         }
         else if (other.CompareTag("Player Tank"))
         {
@@ -99,7 +101,7 @@ public class ShellMovement : MonoBehaviour
             }
             //other.GetComponent<TankShooting>().DestroyTank(other.gameObject);
             DestroyTank(other.gameObject);
-            DestroyShot(shot);
+            DestroyShot();
         }
         else if (other.CompareTag("Hay"))
         {
@@ -150,12 +152,12 @@ public class ShellMovement : MonoBehaviour
         if (other.CompareTag("Enemy Tank"))
         {
             DestroyTank(other.gameObject);
-            DestroyShot(shot);
+            DestroyShot();
         }
         else if (other.CompareTag("Player Tank"))
         {
             DestroyTank(other.gameObject);
-            DestroyShot(shot);
+            DestroyShot();
         }
     }
 
@@ -163,23 +165,22 @@ public class ShellMovement : MonoBehaviour
     {
         tankParticles.transform.position = other.transform.position;
         tankParticles.gameObject.SetActive(true);
-
         tankParticles.Play();
-
         tankExplosionAudio.Play();
-        Destroy(tankParticles);
-        other.SetActive(false);
-        Destroy(other, 2f);
+        //destroy the explosion with a small delay so it can play properly
+        Destroy(tankExplosion, 1f);
+        Destroy(other);
     }
 
-    public void DestroyShot(GameObject other)
+    public void DestroyShot()
     {
-        shellParticles.transform.position = other.transform.position;
+        shellParticles.transform.position = transform.position;
         shellParticles.gameObject.SetActive(true);
-
         shellParticles.Play();
-        Destroy(shellParticles);
-        Destroy(other);
+        //destroy the explosion with a small delay so it can play properly
+        Destroy(shellExplosion, 1f);
+        if (tankExplosion) Destroy(tankExplosion, 1f);
+        Destroy(gameObject);
     }
 
     /*
