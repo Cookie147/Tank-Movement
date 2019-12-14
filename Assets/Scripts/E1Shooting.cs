@@ -11,7 +11,7 @@ public class E1Shooting : MonoBehaviour
     public int rotationSpeed = 100;
     public float reloadTime;
     public const float maxRayDistance = 55f;
-    public const float inaccurracy = 10f;
+    public const float inaccurracy = 1f;
     public bool justShot;
     public Rigidbody turret;
     public Rigidbody shellPrefab;
@@ -84,12 +84,13 @@ public class E1Shooting : MonoBehaviour
             direction.y = 0;
             if(Physics.Raycast(transform.position, direction, out RaycastHit hit, maxRayDistance))
             {
+                
                 //print(hit.collider.tag + " was hit in direction " + direction.ToString());
                 if(hit.collider.CompareTag("Player Tank"))
                 {
                     int side = playerTank.transform.position.x > transform.position.x ? 1 : -1;
                     shotDirection = (Vector3.Angle(Vector3.forward, direction) * side + 360) % 360;
-                    //print("player can be accessed easily, the angle is " + shotDirection);
+                    print("player can be accessed easily, the angle is " + shotDirection);
                     return;
                 }
             }
@@ -105,10 +106,10 @@ public class E1Shooting : MonoBehaviour
             Vector3 directionToCheck = Quaternion.Euler(new Vector3(0, i, 0)) * Vector3.forward;
             //print("checking: " + i + " from " + transform.position.ToString());
             //the first raycast that will most likely hit a wall, or maybe a player or mine (ignored so far)
-            if (Physics.Raycast(transform.position, directionToCheck, out RaycastHit hit, maxRayDistance))
+            if (Physics.Raycast(transform.position, directionToCheck, out RaycastHit hit0, maxRayDistance))
             {
                 //if the player is hit in this direction, that is the best option we can possibly find, so save the angle and end the method
-                if (hit.collider.CompareTag("Player Tank"))
+                if (hit0.collider.CompareTag("Player Tank"))
                 {
                     bestDirection = i;
                     //print("direct player hit detected in direction " + bestDirection);
@@ -116,13 +117,14 @@ public class E1Shooting : MonoBehaviour
                 }
                 //if a wall is hit, we'll have to check with a new raycast if a shot that bounces off the wall would hit something useful
                 //if bounce is 0, the shot will be destroyed at this point, so it is useless to check anything else
-                if (hit.collider.CompareTag("Wall") && bounce != 0)
+                if (hit0.collider.CompareTag("Wall") && bounce != 0)
                 {
                     //this could be done recusrively to be able to perform arbitrarily many bounces. Here, however, it will be implemented for 1 bounce only
-                    if (Physics.Raycast(hit.point, Vector3.Reflect(directionToCheck, hit.normal), maxRayDistance))
+                    if (Physics.Raycast(hit0.point, Vector3.Reflect(directionToCheck, hit0.normal), out RaycastHit hit1, maxRayDistance))
                     {
+                        Debug.DrawRay(hit0.point, Vector3.Reflect(directionToCheck, hit0.normal) * 10, Color.black, 0f);
                         //if the player is hit now, that is the best option we can find now, so save the INITIAL angle (not the one of the second Raycast) and end the method
-                        if (hit.collider.CompareTag("Player Tank"))
+                        if (hit1.collider.CompareTag("Player Tank"))
                         {
                             print("player hit detected after 1 hit");
                             bestDirection = i;
@@ -131,7 +133,7 @@ public class E1Shooting : MonoBehaviour
                     }
                     //copy mine check from below
                 }
-                else if (hit.collider.CompareTag("Mine"))
+                else if (hit0.collider.CompareTag("Mine"))
                 {
                     //check whether the player is inside the mine's explosion radius. If so, then this is a good option (or even better than the player directly?)
                 }
@@ -148,9 +150,9 @@ public class E1Shooting : MonoBehaviour
 
             //check if it will shoot itself in this direction
         }
-        else
+        else if (bestDirection != -1)
         {
-            shotDirection = bestDirection;
+            shotDirection = (bestDirection + 360) % 360;
             //print("shotDirection is now: " + shotDirection);
         }
     }//get new shot direction

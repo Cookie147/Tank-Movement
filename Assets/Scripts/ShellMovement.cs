@@ -34,7 +34,7 @@ public class ShellMovement : MonoBehaviour
         speed = 8;
         float x = Mathf.Sin(shell.rotation.eulerAngles.y * Mathf.PI / 180);
         float z = Mathf.Cos(shell.rotation.eulerAngles.y * Mathf.PI / 180);
-        shell.velocity = (new Vector3(x, 1, z)).normalized * speed;
+        shell.velocity = new Vector3(x, 1, z).normalized * speed;
         v = shell.velocity;
         angle = transform.eulerAngles.y;
 
@@ -62,6 +62,8 @@ public class ShellMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
         }
+
+        Debug.DrawRay(transform.position, transform.forward * 20, Color.green, 0f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -136,11 +138,14 @@ public class ShellMovement : MonoBehaviour
             angle = currentAngle + 180;
         }*/
 
-        Vector3 direction = Vector3.Reflect(v.normalized, normal);
+        Vector3 direction = (Vector3.Reflect(v.normalized, normal)).normalized;
         shell.velocity = direction * speed;
-        transform.rotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.LookRotation(shell.velocity);
         angle = transform.eulerAngles.y;
+        v = shell.velocity;
 
+        //little adjustment bc we rotate around the transform which is located at the very end of the shell, not in the centre
+        //transform.position += Vector3.left;
 
         /*
         shot.transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
