@@ -16,8 +16,9 @@ public class ShellMovement : MonoBehaviour
     public string type = "Normal";//to be automatized later
     public GameObject tankExplosionPrefab;
     public GameObject shellExplosionPrefab;
-    GameObject tankExplosion;
-    GameObject shellExplosion;
+    public GameObject tankExplosion;
+    public GameObject shellExplosion;
+    public GameObject shotFiring;
 
     private GameObject myTank;
     private AudioSource tankExplosionAudio;
@@ -91,6 +92,8 @@ public class ShellMovement : MonoBehaviour
         else if (other.CompareTag("Shot"))
         {
             other.SendMessage("DestroyShot");
+            GameObject ruedi = Instantiate(shotFiring);
+            Destroy(ruedi, 0.5f);
             DestroyShot();
         }
         else if (other.CompareTag("Player Tank"))
@@ -105,7 +108,9 @@ public class ShellMovement : MonoBehaviour
         }
         else if (other.CompareTag("Hay"))
         {
-            Destroy(shot);
+            Destroy(tankExplosion);
+            Destroy(shellExplosion);
+            Destroy(gameObject);
         }
     }
 

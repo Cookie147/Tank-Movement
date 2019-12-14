@@ -153,7 +153,7 @@ public class E1Shooting : MonoBehaviour
             shotDirection = bestDirection;
             //print("shotDirection is now: " + shotDirection);
         }
-    }
+    }//get new shot direction
 
     /*
      * turns towards the "shotDirection" and indicates if the turret points to the intended direction
