@@ -1381,6 +1381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: E0Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 5102584571721622789, guid: 85a6557143dba4159a7e5f442e6a0631,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy Tank
+      objectReference: {fileID: 0}
     - target: {fileID: 5102584571721726181, guid: 85a6557143dba4159a7e5f442e6a0631,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1446,6 +1451,11 @@ PrefabInstance:
       propertyPath: playerTank
       value: 
       objectReference: {fileID: 2063517042}
+    - target: {fileID: 5102584571721622793, guid: 85a6557143dba4159a7e5f442e6a0631,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy Tank
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85a6557143dba4159a7e5f442e6a0631, type: 3}
 --- !u!1 &2063517042 stripped

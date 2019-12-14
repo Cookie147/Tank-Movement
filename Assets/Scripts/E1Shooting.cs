@@ -111,7 +111,7 @@ public class E1Shooting : MonoBehaviour
                 if (hit.collider.CompareTag("Player Tank"))
                 {
                     bestDirection = i;
-                    print("direct player hit detected in direction " + bestDirection);
+                    //print("direct player hit detected in direction " + bestDirection);
                     break;
                 }
                 //if a wall is hit, we'll have to check with a new raycast if a shot that bounces off the wall would hit something useful

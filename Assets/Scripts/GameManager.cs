@@ -18,6 +18,22 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        playerAlive = true;
+
+        if (GameObject.FindGameObjectsWithTag("Player Tank").Length == 0)
+        {
+            playerAlive = false;
+            Debug.Log("Loser");
+        }
+
+        Debug.Log(GameObject.FindGameObjectsWithTag("Enemy Tank").Length);
+        if (GameObject.FindGameObjectsWithTag("Enemy Tank").Length == 0 && playerAlive)
+        {
+            Debug.Log("Win");
+        }
+
+        
+        /*
         GameObject[] gameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
         playerAlive = false;
         numEnemies = 0;
@@ -45,7 +61,7 @@ public class GameManager : MonoBehaviour
         if (numEnemies == 0 && playerAlive)
         {
             Debug.Log("Win");
-        }
+        } */
     }
 
     //Difficulty Settings
