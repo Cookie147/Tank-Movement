@@ -23,7 +23,8 @@ public class TankShooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxShots = GameObject.Find("Storage").GetComponent<GameManager>().getNumShots();
+        GameObject s = GameObject.Find("Storage");
+        if(s) maxShots = s.GetComponent<GameManager>().getNumShots();
         if (maxShots == 0) maxShots = 5;
         print(maxShots);
         mines = new GameObject[maxMines];

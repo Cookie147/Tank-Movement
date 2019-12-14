@@ -62,10 +62,9 @@ public class E1Movement : MonoBehaviour
             }
             else
             {
-                waitTimer = Random.Range(0, 2f) + 0.5f;
+                waitTimer = Random.Range(0, 0.5f) + 0.5f;
                 wait = true;
             }
-            //or maybe something else (like wait for some time)
         }
         Move();
         //set the sound
