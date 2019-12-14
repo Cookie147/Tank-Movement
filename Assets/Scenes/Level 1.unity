@@ -1550,6 +1550,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 4834253716370814736, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4834253716370713328, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1603,6 +1608,11 @@ PrefabInstance:
     - target: {fileID: 4834253716370713328, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185812981165146043, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
+        type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

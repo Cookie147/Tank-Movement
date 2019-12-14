@@ -34,7 +34,7 @@ public class ShellMovement : MonoBehaviour
         speed = 8;
         float x = Mathf.Sin(shell.rotation.eulerAngles.y * Mathf.PI / 180);
         float z = Mathf.Cos(shell.rotation.eulerAngles.y * Mathf.PI / 180);
-        shell.velocity = new Vector3(x, 1, z).normalized * speed;
+        shell.velocity = new Vector3(x, 0, z).normalized * speed;
         v = shell.velocity;
         angle = transform.eulerAngles.y;
 

@@ -47,6 +47,8 @@ public class E1Shooting : MonoBehaviour
         {
             Shoot();
         }
+        //not yet implemented
+        //CheckThreats();
     }
 
     /*
@@ -90,7 +92,7 @@ public class E1Shooting : MonoBehaviour
                 {
                     int side = playerTank.transform.position.x > transform.position.x ? 1 : -1;
                     shotDirection = (Vector3.Angle(Vector3.forward, direction) * side + 360) % 360;
-                    print("player can be accessed easily, the angle is " + shotDirection);
+                    //print("player can be accessed easily, the angle is " + shotDirection);
                     return;
                 }
             }
@@ -126,7 +128,7 @@ public class E1Shooting : MonoBehaviour
                         //if the player is hit now, that is the best option we can find now, so save the INITIAL angle (not the one of the second Raycast) and end the method
                         if (hit1.collider.CompareTag("Player Tank"))
                         {
-                            print("player hit detected after 1 hit");
+                            //print("player hit detected after 1 hit");
                             bestDirection = i;
                             break;
                         }
@@ -144,11 +146,11 @@ public class E1Shooting : MonoBehaviour
         //if, after checking the whole circle, no interesting hit has been found, return some random direction that will stay the same until a shot is fired (either in this direction or towards the player)
         if(bestDirection == -1 && !randomDirection)
         {
-            shotDirection = Random.Range(0f, 360f);
+            do {
+                shotDirection = Random.Range(0f, 360f);
+                //print("random direction: " + shotDirection);
+            } while (CheckSelfHit());
             randomDirection = true;
-            print("random direction: " + shotDirection);
-
-            //check if it will shoot itself in this direction
         }
         else if (bestDirection != -1)
         {
@@ -202,6 +204,47 @@ public class E1Shooting : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, rotationSpeed * Time.deltaTime * leftOrRight, 0) + transform.eulerAngles);
 
         //*/
+        return false;
+    }
+
+    /*
+     * This method checks if a bullet is flying towards it so it can destory it before it hits
+     * in case of the moving tanks, it should also check for mines it could run into
+     */
+    private void CheckThreats()
+    {
+
+    }
+
+    /*
+     * checks if, with the current direction, the tank would hit itself
+     * 
+     * NOTE: with the current physics (see below*) it is possible that shots hit the tank
+     * even if the raycast doesn't (for example 178° "shotDirection")
+     * * Shots that bounce off a wall will have a small error component in their movement. I think that the collision adds this
+     *   so far, i haven't figured out why this happens and, more importantly, how to avoid or correct it
+     * 
+     * @return true if the tank would hit itself
+     */
+    private bool CheckSelfHit()
+    {
+        Vector3 direction = Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward;
+        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, maxRayDistance))
+        {
+            if (hit.collider.CompareTag("Wall"))
+            {
+                if (Physics.Raycast(hit.point, Vector3.Reflect(direction, hit.normal), out RaycastHit hit1, maxRayDistance))
+                {
+                    //use the following line to visualize the problem stated in the description
+                    //Debug.DrawRay(hit.point, Vector3.Reflect(direction, hit.normal) * 20, Color.red, 0f);
+                    if (hit1.collider.CompareTag("Enemy Tank"))
+                    {
+                        //print(shotDirection + " is a bad direction");
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 
