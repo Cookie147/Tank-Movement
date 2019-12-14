@@ -169,7 +169,7 @@ public class ShellMovement : MonoBehaviour
         tankExplosionAudio.Play();
         //destroy the explosion with a small delay so it can play properly
         Destroy(tankExplosion, 1f);
-        Destroy(other);
+        Destroy(other.transform.parent.gameObject);
     }
 
     public void DestroyShot()
