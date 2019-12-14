@@ -157,7 +157,8 @@ public class MineScript : MonoBehaviour
         tankExplosionAudio.Play();
         //destroy the explosion with a small delay so it can play properly
         Destroy(tankExplosion, 1f);
-        Destroy(other);
+        if (other.CompareTag("Mine")) Destroy(other);
+        else Destroy(other.transform.parent.gameObject);
     }
 
     /*
