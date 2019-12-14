@@ -14,16 +14,16 @@ public class Difficulty : MonoBehaviour
 
     public void setEasy()
     {
-        storage.GetComponent<Storage>().setNumShots(100);
+        storage.GetComponent<GameManager>().setNumShots(100);
     }
 
     public void setMedium()
     {
-        storage.GetComponent<Storage>().setNumShots(10);
+        storage.GetComponent<GameManager>().setNumShots(10);
     }
 
     public void setHard()
     {
-        storage.GetComponent<Storage>().setNumShots(5);
+        storage.GetComponent<GameManager>().setNumShots(5);
     }
 }

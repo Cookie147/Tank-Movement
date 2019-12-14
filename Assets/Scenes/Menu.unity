@@ -4372,10 +4372,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1627396091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cade75f9520474d0b87599a0f863a651, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d1cd2552f9e849a2b40993951ba7a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxShots: 0
+  maxShots: 5
 --- !u!4 &1627396093
 Transform:
   m_ObjectHideFlags: 0
@@ -4646,6 +4646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numShots: 5
+  storage: {fileID: 0}
 --- !u!1 &1843790341
 GameObject:
   m_ObjectHideFlags: 0
