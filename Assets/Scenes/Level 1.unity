@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4411499, g: 0.48991597, b: 0.5699891, a: 1}
+  m_IndirectSpecularColor: {r: 0.44114992, g: 0.48991603, b: 0.5699889, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1384,7 +1384,7 @@ PrefabInstance:
     - target: {fileID: 5102584571721622789, guid: 85a6557143dba4159a7e5f442e6a0631,
         type: 3}
       propertyPath: m_TagString
-      value: Enemy Tank
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5102584571721622789, guid: 85a6557143dba4159a7e5f442e6a0631,
         type: 3}
@@ -1605,5 +1605,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4834253715707464020, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
+        type: 3}
+      propertyPath: playground
+      value: 
+      objectReference: {fileID: 1713012671}
+    - target: {fileID: 4834253715707464020, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 534669904}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02414f2ed1e8a4e4da05e9d2e07e9637, type: 3}
