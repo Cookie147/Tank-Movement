@@ -8,12 +8,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 7a43a55a3163245f2866c0f33cdc404e
+  - enabled: 0
+    path: Assets/Scenes/LoadScreen 1.unity
+    guid: fc75727d1a6d64012a87c022260bc578
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: a0ba41b5b860949358b56fcc69b642cf
+  - enabled: 0
+    path: Assets/Scenes/LoadScreen 2.unity
+    guid: c27682badddb94fa2aaafcd68ffa1a22
   - enabled: 1
     path: Assets/Scenes/Level 2.unity
     guid: 38e4b614abd2946efa6519c405d94a7b
+  - enabled: 0
+    path: Assets/Scenes/LoadScreen 3.unity
+    guid: c94ebfa6a92ab44379f7cdd1d8653f43
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
     guid: 588ea7a5e117f4d1987a1d7694f5c54f

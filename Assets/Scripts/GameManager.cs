@@ -6,9 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int maxShots;
-    private int numEnemies;
     private bool playerAlive;
-    //Sounds
 
     void Awake()
     {
@@ -18,22 +16,37 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        playerAlive = true;
 
-        //Debug.Log(GameObject.FindGameObjectsWithTag("Player Tank").Length);
-        if (GameObject.FindGameObjectsWithTag("Player Tank").Length == 0)
+        if (SceneManager.GetActiveScene().buildIndex > 0)
         {
-            playerAlive = false;
-            Debug.Log("Loser");
-        }
 
-        Debug.Log(GameObject.FindGameObjectsWithTag("Enemy Tank").Length);    
-        if (GameObject.FindGameObjectsWithTag("Enemy Tank").Length == 0 && playerAlive)
-        {
-            Debug.Log("Win");
-        }
+            
+                Debug.Log("level");
+                playerAlive = true;
 
-        
+                if (GameObject.FindGameObjectsWithTag("Player Tank").Length == 0)
+                {
+                    playerAlive = false;
+                    Debug.Log("Loser");
+                    SceneManager.LoadScene("Menu");
+                }
+
+                if (GameObject.FindGameObjectsWithTag("Enemy Tank").Length == 0 && playerAlive)
+                {
+                    Debug.Log("Win");
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+            
+
+            //Debug.Log("Scene" + SceneManager.GetActiveScene().buildIndex);
+            //if (SceneManager.GetActiveScene().buildIndex % 2 == 1)
+            //{
+               // StartCoroutine(DelayLoadLevel(5f));
+           // }
+        }
+    
+
+
         /*
         GameObject[] gameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
         playerAlive = false;
@@ -74,5 +87,12 @@ public class GameManager : MonoBehaviour
     public int getNumShots()
     {
         return maxShots;
+    }
+
+    private IEnumerator DelayLoadLevel(float duration)
+    {
+        yield return new WaitForSecondsRealtime(duration);
+        Debug.Log("Wait");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
