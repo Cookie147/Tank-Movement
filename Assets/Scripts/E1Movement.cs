@@ -10,7 +10,13 @@ public class E1Movement : MonoBehaviour
     public Rigidbody rb;
     public Rigidbody turret;
     public GameObject playerTank;
+    public AudioSource movementAudio;
+    public AudioClip movingClip;
+    public AudioClip idleClip;
 
+    private const int IDLE = 0;
+    private const int DRIVING = 1;
+    private int state = 0;
     private int length, direction;
     private float oldAngle;
     private float waitTimer;
@@ -36,6 +42,13 @@ public class E1Movement : MonoBehaviour
     {
         if (wait)
         {
+            if(state == DRIVING)
+            {
+                state = IDLE;
+                movementAudio.clip = idleClip;
+                movementAudio.pitch = Random.Range(1 - 0.2f, 1 + 0.1f);
+                movementAudio.Play();
+            }
             waitTimer -= Time.deltaTime;
             if (waitTimer <= 0)
                 wait = false;
@@ -43,7 +56,7 @@ public class E1Movement : MonoBehaviour
         }
         if (!moving)
         {
-            if (Random.Range(0, 2) < 2)
+            if (Random.Range(0, 3) < 2)
             {
                 NewMovement();
             }
@@ -55,6 +68,14 @@ public class E1Movement : MonoBehaviour
             //or maybe something else (like wait for some time)
         }
         Move();
+        //set the sound
+        if (state == IDLE)
+        {
+            state = DRIVING;
+            movementAudio.clip = movingClip;
+            movementAudio.pitch = Random.Range(1 - 0.1f, 1 + 0.2f);
+            movementAudio.Play();
+        }
     }
 
     /*
@@ -113,13 +134,23 @@ public class E1Movement : MonoBehaviour
     {
         if (collision.collider.CompareTag("Wall") || collision.collider.CompareTag("Hay"))
         {
-            moving = false;
             /*
              * IMPORTANT: test wall hits in "OnCollisionStay", not Enter
              * with "Enter" it can happen that the tank will get a new direction that leads into the wall again. Since it 
              * already touches the wall, this won't trigger a new
              * collision, thus the tank will just stay there and try to move into the wall.
+             * 
+             * if a wall is hit but it is not in the direction the tank wants to move, that does not pose a problem, so test if the wall
+             * ahead is the same as the one we hit.
              */
+
+            if(Physics.Raycast(transform.position, Quaternion.Euler(new Vector3(0, direction * 45)) * Vector3.forward, out RaycastHit hit))
+            {
+                if(hit.transform.gameObject == collision.gameObject)
+                {
+                    moving = false;
+                }
+            }
         }
     }
 
