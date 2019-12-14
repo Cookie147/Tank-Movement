@@ -49,7 +49,7 @@ public class ShellMovement : MonoBehaviour
     void Update()
     {
         //as soon as the shot bounced off a wall once, it should be able to hit the tank it was shot from again
-        if(bounceCount > 0)
+        if(bounceCount > 0 && myTank)
         {
             Physics.IgnoreCollision(shell.GetComponent<Collider>(), myTank.GetComponentInChildren<Collider>(), false);
         }
@@ -168,7 +168,8 @@ public class ShellMovement : MonoBehaviour
 
         tankExplosionAudio.Play();
         Destroy(tankParticles);
-        Destroy(other);
+        other.SetActive(false);
+        Destroy(other, 2f);
     }
 
     public void DestroyShot(GameObject other)

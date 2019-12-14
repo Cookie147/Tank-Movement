@@ -155,8 +155,8 @@ public class MineScript : MonoBehaviour
         tankParticles.Play();
 
         tankExplosionAudio.Play();
-        Destroy(tankParticles);
-        Destroy(other);
+        //Destroy(tankParticles);
+        //Destroy(other);
     }
 
     /*
