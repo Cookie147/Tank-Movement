@@ -20,13 +20,14 @@ public class GameManager : MonoBehaviour
     {
         playerAlive = true;
 
+        //Debug.Log(GameObject.FindGameObjectsWithTag("Player Tank").Length);
         if (GameObject.FindGameObjectsWithTag("Player Tank").Length == 0)
         {
             playerAlive = false;
             Debug.Log("Loser");
         }
 
-        Debug.Log(GameObject.FindGameObjectsWithTag("Enemy Tank").Length);
+        Debug.Log(GameObject.FindGameObjectsWithTag("Enemy Tank").Length);    
         if (GameObject.FindGameObjectsWithTag("Enemy Tank").Length == 0 && playerAlive)
         {
             Debug.Log("Win");

@@ -4,12 +4,12 @@
       <File FileName="Assets/Scripts/GameManager.cs" Line="29" Column="75" />
       <File FileName="Assets/Scripts/MineScript.cs" />
       <File FileName="Assets/Scripts/MainMenu.cs" />
-      <File FileName="Assets/Scripts/E1Shooting.cs" Line="114" Column="23" />
+      <File FileName="Assets/Scripts/E1Shooting.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4ba7c82b-181f-4481-8565-4d0ee7597862" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cb2e13da-7472-417f-9e7a-c5dcf2ea8ef6" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
