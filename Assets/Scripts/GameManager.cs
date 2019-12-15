@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
             //in level
             if(SceneManager.GetActiveScene().buildIndex%2 == 0)
             {
-                if (!colorSet)
+                if (colorSet == false)
                 {
                     ColorTank();
                 }
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     public void SetColor(Material choosenMaterial)
     {
         newMaterial = choosenMaterial;
+        Debug.Log(newMaterial);
     }
 
     public void WinOrLose()
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
             if (timer > 0.5f)
             {
                 timer = 0f;
+                colorSet = false;
                 OpenMenu();
             }
         }
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviour
 
     public void ColorTank()
     {
+        //Debug.Log("ColorTank" + newMaterial);
         tank = GameObject.FindGameObjectWithTag("Player Tank");
         chassis = tank.transform.Find("TankChassis").gameObject;
         leftTracks = tank.transform.Find("TankTracksLeft").gameObject;

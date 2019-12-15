@@ -3225,7 +3225,7 @@ MonoBehaviour:
   leftTracks: {fileID: 0}
   rightTracks: {fileID: 0}
   turret: {fileID: 0}
-  newMaterial: {fileID: 2100000, guid: bc1efb2e9eafd2a408a87669654d575d, type: 2}
+  newMaterial: {fileID: 2100000, guid: a9af0b6208c8d421392d9f17e8ced01c, type: 2}
 --- !u!4 &1627396093
 Transform:
   m_ObjectHideFlags: 0

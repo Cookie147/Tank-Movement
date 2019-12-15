@@ -4149,5 +4149,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 534669904}
+    - target: {fileID: 2185812981165146043, guid: 02414f2ed1e8a4e4da05e9d2e07e9637,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02414f2ed1e8a4e4da05e9d2e07e9637, type: 3}
