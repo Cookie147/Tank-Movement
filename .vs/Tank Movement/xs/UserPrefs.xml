@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{80C1E085-CBE9-DCF2-B2F9-8ED0F68032C5}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="114" Column="25" />
-      <File FileName="Assets/Scripts/ColorSet.cs" Line="18" Column="48" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="91" Column="25" />
+      <File FileName="Assets/Scripts/ColorSet.cs" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">

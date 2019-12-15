@@ -538,8 +538,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000085354, y: -116.5}
-  m_SizeDelta: {x: 177.1, y: 60.45}
+  m_AnchoredPosition: {x: -22.125, y: -111.45}
+  m_SizeDelta: {x: 138.55, y: 60.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &168770120
 MonoBehaviour:
@@ -663,8 +663,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000085354, y: -50.94999}
-  m_SizeDelta: {x: 177.1, y: 60.45}
+  m_AnchoredPosition: {x: -27.1, y: -50.94999}
+  m_SizeDelta: {x: 109.7, y: 60.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &229334222
 MonoBehaviour:
@@ -1234,9 +1234,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Color 1
-
-'
+  m_Text: Blue
 --- !u!222 &622392435
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1281,8 +1279,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000072479, y: 10.275}
-  m_SizeDelta: {x: 182.9, y: 62}
+  m_AnchoredPosition: {x: -27.1, y: 10.25}
+  m_SizeDelta: {x: 102.4, y: 62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &644799555
 MonoBehaviour:
@@ -1542,7 +1540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000019073, y: 41.3}
+  m_AnchoredPosition: {x: 0.0000019073, y: 41}
   m_SizeDelta: {x: 120.72, y: 60.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &810781564
@@ -1924,8 +1922,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: -180}
-  m_SizeDelta: {x: 210.1, y: 121}
+  m_AnchoredPosition: {x: -0.85001, y: -200}
+  m_SizeDelta: {x: 135.2, y: 77.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &967036356
 MonoBehaviour:
@@ -2092,9 +2090,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Color 2
-
-'
+  m_Text: Red
 --- !u!222 &967974913
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2295,8 +2291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000011444, y: 71.5}
-  m_SizeDelta: {x: 177.1, y: 60.45}
+  m_AnchoredPosition: {x: -25.399988, y: 71.5}
+  m_SizeDelta: {x: 122.8, y: 60.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059716901
 MonoBehaviour:
@@ -2497,8 +2493,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: -180}
-  m_SizeDelta: {x: 210.1, y: 121}
+  m_AnchoredPosition: {x: -25.4, y: -200}
+  m_SizeDelta: {x: 126.2, y: 61.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181584436
 MonoBehaviour:
@@ -3090,8 +3086,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: -72}
-  m_SizeDelta: {x: 246.5, y: 121}
+  m_AnchoredPosition: {x: -0.84999, y: -74}
+  m_SizeDelta: {x: 211.8, y: 68.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1624653501
 MonoBehaviour:
@@ -3488,9 +3484,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Color 4
-
-'
+  m_Text: Green
 --- !u!222 &1783492409
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3535,8 +3529,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: -180}
-  m_SizeDelta: {x: 210.1, y: 121}
+  m_AnchoredPosition: {x: 0, y: -200}
+  m_SizeDelta: {x: 137.1, y: 57.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843790343
 MonoBehaviour:
@@ -3857,9 +3851,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Color 3
-
-'
+  m_Text: Pink
 --- !u!222 &1972747057
 CanvasRenderer:
   m_ObjectHideFlags: 0

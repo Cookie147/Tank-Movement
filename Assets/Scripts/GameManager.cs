@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("DeadScreen");
 
             timer += Time.deltaTime;
-            if (timer > 0.5f)
+            if (timer > 0.25f)
             {
                 timer = 0f;
                 colorSet = false;
@@ -95,14 +95,19 @@ public class GameManager : MonoBehaviour
         //all enemies dead?
         if (GameObject.FindGameObjectsWithTag("Enemy Tank").Length == 0 && playerAlive)
         {
-            //load loadsceen of next level
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+            timer += Time.deltaTime;
+            if (timer > 1f)
+            {
+                timer = 0f;
+                //load loadsceen of next level
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 
     public void ColorTank()
     {
-        //Debug.Log("ColorTank" + newMaterial);
         tank = GameObject.FindGameObjectWithTag("Player Tank");
         chassis = tank.transform.Find("TankChassis").gameObject;
         leftTracks = tank.transform.Find("TankTracksLeft").gameObject;
