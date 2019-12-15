@@ -5,25 +5,25 @@ using UnityEngine;
 public class Difficulty : MonoBehaviour
 {
     public int numShots;
-    public GameObject storage;
+    public GameObject gameManager;
 
     public void Start()
     {
-        storage = GameObject.Find("Storage");
+        gameManager = GameObject.Find("GameManager");
     }
 
     public void setEasy()
     {
-        storage.GetComponent<GameManager>().setNumShots(100);
+        gameManager.GetComponent<GameManager>().setNumShots(100);
     }
 
     public void setMedium()
     {
-        storage.GetComponent<GameManager>().setNumShots(10);
+        gameManager.GetComponent<GameManager>().setNumShots(10);
     }
 
     public void setHard()
     {
-        storage.GetComponent<GameManager>().setNumShots(5);
+        gameManager.GetComponent<GameManager>().setNumShots(5);
     }
 }

@@ -7,75 +7,53 @@ public class GameManager : MonoBehaviour
 {
     public int maxShots;
     private bool playerAlive;
+    private float timer = 0.0f;
+    private float waitingTime = 2.5f;
+    public GameObject tank;
+    public GameObject chassis;
+    public GameObject leftTracks;
+    public GameObject rightTracks;
+    public GameObject turret;
+    public Material newMaterial;
+    private bool colorSet = false;
+
 
     void Awake()
     {
+        //dont destroy script in next sceen
         DontDestroyOnLoad(gameObject);
+
         maxShots = 5;
     }
 
     void Update()
     {
-
         if (SceneManager.GetActiveScene().buildIndex > 0)
         {
-
-            
-                Debug.Log("level");
-                playerAlive = true;
-
-                if (GameObject.FindGameObjectsWithTag("Player Tank").Length == 0)
+            //in loadscreen
+            if(SceneManager.GetActiveScene().buildIndex%2 == 1)
+            {
+                //Wait for 2.5 seconds in loadscreen of next level
+                timer += Time.deltaTime;
+                if (timer > waitingTime)
                 {
-                    playerAlive = false;
-                    Debug.Log("Loser");
-                    SceneManager.LoadScene("Menu");
-                }
-
-                if (GameObject.FindGameObjectsWithTag("Enemy Tank").Length == 0 && playerAlive)
-                {
-                    Debug.Log("Win");
+                    timer = 0f;
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    colorSet = false;
                 }
-            
-
-            //Debug.Log("Scene" + SceneManager.GetActiveScene().buildIndex);
-            //if (SceneManager.GetActiveScene().buildIndex % 2 == 1)
-            //{
-               // StartCoroutine(DelayLoadLevel(5f));
-           // }
-        }
-    
-
-
-        /*
-        GameObject[] gameObjects = SceneManager.GetActiveScene().GetRootGameObjects();
-        playerAlive = false;
-        numEnemies = 0;
-
-        for(int i=0; i<gameObjects.Length; i++)
-        {
-            if(gameObjects[i].CompareTag("Player Tank"))
-            {
-                playerAlive = true;
             }
 
-            if(gameObjects[i].CompareTag("Enemy Tank"))
+            //in level
+            if(SceneManager.GetActiveScene().buildIndex%2 == 0)
             {
-                ++numEnemies;
+                if (!colorSet)
+                {
+                    ColorTank();
+                }
+
+                WinOrLose();
             }
         }
-
-        Debug.Log(numEnemies);
-        Debug.Log(playerAlive);
-        if (!playerAlive)
-        {
-            Debug.Log("Loser");
-        }
-
-        if (numEnemies == 0 && playerAlive)
-        {
-            Debug.Log("Win");
-        } */
     }
 
     //Difficulty Settings
@@ -89,10 +67,61 @@ public class GameManager : MonoBehaviour
         return maxShots;
     }
 
-    private IEnumerator DelayLoadLevel(float duration)
+    public void SetColor(Material choosenMaterial)
     {
-        yield return new WaitForSecondsRealtime(duration);
-        Debug.Log("Wait");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        newMaterial = choosenMaterial;
+    }
+
+    public void WinOrLose()
+    {
+        playerAlive = true;
+
+        //player dead?
+        if (GameObject.FindGameObjectWithTag("Player Tank") == null)
+        {
+            playerAlive = false;
+            SceneManager.LoadScene("DeadScreen");
+
+            timer += Time.deltaTime;
+            if (timer > 0.5f)
+            {
+                timer = 0f;
+                OpenMenu();
+            }
+        }
+
+        //all enemies dead?
+        if (GameObject.FindGameObjectsWithTag("Enemy Tank").Length == 0 && playerAlive)
+        {
+            //load loadsceen of next level
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+    public void ColorTank()
+    {
+        tank = GameObject.FindGameObjectWithTag("Player Tank");
+        chassis = tank.transform.Find("TankChassis").gameObject;
+        leftTracks = tank.transform.Find("TankTracksLeft").gameObject;
+        rightTracks = tank.transform.Find("TankTracksRight").gameObject;
+        turret = tank.transform.Find("TankTurret").gameObject;
+
+        chassis.GetComponent<Renderer>().material = newMaterial;
+        leftTracks.GetComponent<Renderer>().material = newMaterial;
+        rightTracks.GetComponent<Renderer>().material = newMaterial;
+        turret.GetComponent<Renderer>().material = newMaterial;
+
+        colorSet = true;
+    }
+
+    public void OpenMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit!");
+        Application.Quit();
     }
 }

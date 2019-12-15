@@ -1,15 +1,22 @@
 ﻿<Properties StartupConfiguration="{80C1E085-CBE9-DCF2-B2F9-8ED0F68032C5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ColorSet.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="8" Column="25" />
-      <File FileName="Assets/Scripts/MainMenu.cs" />
-      <File FileName="Assets/Scripts/MineScript.cs" />
-      <File FileName="Assets/Scripts/E1Shooting.cs" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="42" Column="38" />
+      <File FileName="Assets/Scripts/MainMenu.cs" Line="18" Column="29" />
+      <File FileName="Assets/Scripts/Difficulty.cs" Line="28" Column="6" />
+      <File FileName="Assets/Scripts/ColorSet.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Tank Movement" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cb2e13da-7472-417f-9e7a-c5dcf2ea8ef6" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9f0225be-e201-4759-bdfc-e3e39881a1bb" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
