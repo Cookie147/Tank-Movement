@@ -17,13 +17,11 @@ public class Hay : MonoBehaviour
 
     public void SetOnFire()
     {
-
-        //fireParticles.transform.position = gameObject.transform.position;
+        //set position
         fireParticles.transform.position = transform.position + new Vector3(0,2,-0.5f);
         fireParticles.gameObject.SetActive(true);
 
         fireParticles.Play();
-        //tankExplosionAudio.Play();
 
         Destroy(fireParticles, 7);
         Destroy(gameObject, 7);

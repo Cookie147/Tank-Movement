@@ -12,25 +12,25 @@ public class ColorSet : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
     }
 
-    public void setColor1()
+    public void SetColor1()
     {
         myMaterial = (Material)Resources.Load("BlueTankColor", typeof(Material));
         gameManager.GetComponent<GameManager>().SetColor(myMaterial);
     }
 
-    public void setColor2()
+    public void SetColor2()
     {
         myMaterial = (Material)Resources.Load("RedTankColor", typeof(Material));
         gameManager.GetComponent<GameManager>().SetColor(myMaterial);
     }
 
-    public void setColor3()
+    public void SetColor3()
     {
         myMaterial = (Material)Resources.Load("PinkTankColor", typeof(Material));
         gameManager.GetComponent<GameManager>().SetColor(myMaterial);
     }
 
-    public void setColor4()
+    public void SetColor4()
     {
         myMaterial = (Material)Resources.Load("GreenTankColor", typeof(Material));
         gameManager.GetComponent<GameManager>().SetColor(myMaterial);

@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
     public void SetColor(Material choosenMaterial)
     {
         newMaterial = choosenMaterial;
-        Debug.Log(newMaterial);
     }
 
     public void WinOrLose()
@@ -86,10 +85,9 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > waitingTime)
             {
-                
-                SceneManager.LoadScene("DeadScreen");
                 timer = 0f;
                 timer1 = 0f;
+                SceneManager.LoadScene("DeadScreen");
             }
 
             timer1 += Time.deltaTime;
@@ -104,7 +102,6 @@ public class GameManager : MonoBehaviour
         //all enemies dead?
         if (GameObject.FindGameObjectsWithTag("Enemy Tank").Length == 0 && playerAlive)
         {
-
             timer += Time.deltaTime;
             if (timer > 1f)
             {
@@ -117,12 +114,14 @@ public class GameManager : MonoBehaviour
 
     public void ColorTank()
     {
+        //get object
         tank = GameObject.FindGameObjectWithTag("Player Tank");
         chassis = tank.transform.Find("TankChassis").gameObject;
         leftTracks = tank.transform.Find("TankTracksLeft").gameObject;
         rightTracks = tank.transform.Find("TankTracksRight").gameObject;
         turret = tank.transform.Find("TankTurret").gameObject;
 
+        //change color
         chassis.GetComponent<Renderer>().material = newMaterial;
         leftTracks.GetComponent<Renderer>().material = newMaterial;
         rightTracks.GetComponent<Renderer>().material = newMaterial;

@@ -582,7 +582,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 18361107}
-        m_MethodName: setColor4
+        m_MethodName: SetColor4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -707,7 +707,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 18361107}
-        m_MethodName: setColor3
+        m_MethodName: SetColor3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1323,7 +1323,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 18361107}
-        m_MethodName: setColor2
+        m_MethodName: SetColor2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1584,7 +1584,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1728849380}
-        m_MethodName: setEasy
+        m_MethodName: SetEasy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2335,7 +2335,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 18361107}
-        m_MethodName: setColor1
+        m_MethodName: SetColor1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2880,7 +2880,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1728849380}
-        m_MethodName: setMedium
+        m_MethodName: SetMedium
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3005,7 +3005,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1728849380}
-        m_MethodName: setHard
+        m_MethodName: SetHard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
