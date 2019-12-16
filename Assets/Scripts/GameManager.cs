@@ -81,10 +81,16 @@ public class GameManager : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player Tank") == null)
         {
             playerAlive = false;
-            SceneManager.LoadScene("DeadScreen");
 
             timer += Time.deltaTime;
-            if (timer > 0.25f)
+            if (timer > waitingTime)
+            {
+                timer = 0f;
+                SceneManager.LoadScene("DeadScreen");
+            }
+
+            timer += Time.deltaTime;
+            if (timer > waitingTime)
             {
                 timer = 0f;
                 colorSet = false;
