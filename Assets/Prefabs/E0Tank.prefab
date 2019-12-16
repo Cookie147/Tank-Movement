@@ -277,7 +277,6 @@ GameObject:
   - component: {fileID: 5102584571721726185}
   - component: {fileID: 5102584573291682479}
   - component: {fileID: 5102584573291682478}
-  - component: {fileID: 416228399796474243}
   m_Layer: 0
   m_Name: TankRenderers
   m_TagString: Enemy Tank
@@ -332,23 +331,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2.5}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &416228399796474243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5102584571721622793}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0a8ddd2d549bed48a44d072f363675b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  slerpSpeed: 4
-  rb: {fileID: 5102584573291682479}
-  turret: {fileID: 5102584572384959298}
-  playerTank: {fileID: 0}
 --- !u!1 &5102584571721622797
 GameObject:
   m_ObjectHideFlags: 0
