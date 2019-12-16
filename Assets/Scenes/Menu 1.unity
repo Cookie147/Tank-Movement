@@ -2721,6 +2721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bcc9cf82e454bada7f701fc47b330e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTank: {fileID: 0}
+  d: {fileID: 0}
 --- !u!1 &1557789480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,7 +3415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numShots: 5
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1627396091}
 --- !u!1 &1783492406
 GameObject:
   m_ObjectHideFlags: 0

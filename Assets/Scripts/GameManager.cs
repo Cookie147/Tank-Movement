@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject turret;
     public Material newMaterial;
     private bool colorSet = false;
+    private bool gameWon = false;
 
 
     void Awake()
@@ -29,10 +30,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        //won game?
+        GameWon();
+
+        //not in menu
         if (SceneManager.GetActiveScene().buildIndex > 0)
         {
             //in loadscreen
-            if(SceneManager.GetActiveScene().buildIndex%2 == 1)
+            if(SceneManager.GetActiveScene().buildIndex%2 == 1 && !gameWon)
             {
                 //Wait for 2.5 seconds in loadscreen of next level
                 timer += Time.deltaTime;
@@ -78,12 +83,12 @@ public class GameManager : MonoBehaviour
         playerAlive = true;
 
         //player dead?
-        if (GameObject.FindGameObjectWithTag("Player Tank") == null)
+        if (GameObject.FindGameObjectWithTag("Player Tank") == null && !gameWon)
         {
             playerAlive = false;
 
             timer += Time.deltaTime;
-            if (timer > waitingTime)
+            if (timer > 1f)
             {
                 timer = 0f;
                 timer1 = 0f;
@@ -109,6 +114,14 @@ public class GameManager : MonoBehaviour
                 //load loadsceen of next level
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
+        }
+    }
+
+    public void GameWon()
+    {
+        if(SceneManager.GetActiveScene().name == "WinScreen")
+        {
+            gameWon = true;
         }
     }
 
