@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int maxShots;
     private bool playerAlive;
     private float timer = 0.0f;
+    private float timer1 = 0.0f;
     private float waitingTime = 2.5f;
     public GameObject tank;
     public GameObject chassis;
@@ -85,14 +86,16 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > waitingTime)
             {
-                timer = 0f;
+                
                 SceneManager.LoadScene("DeadScreen");
+                timer = 0f;
+                timer1 = 0f;
             }
 
-            timer += Time.deltaTime;
-            if (timer > waitingTime)
+            timer1 += Time.deltaTime;
+            if (timer1 > waitingTime)
             {
-                timer = 0f;
+                timer1 = 0f;
                 colorSet = false;
                 OpenMenu();
             }
