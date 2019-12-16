@@ -26,7 +26,7 @@ public class TankShooting : MonoBehaviour
     {
         //the first three line are made to prevent errors when loading the first level directly
         GameObject s = GameObject.Find("GameManager");
-        if(s) maxShots = s.GetComponent<GameManager>().getNumShots();
+        if(s) maxShots = s.GetComponent<GameManager>().GetNumShots();
         if (maxShots == 0) maxShots = 5;
         mines = new GameObject[maxMines];
         shots = new GameObject[maxShots];

@@ -58,12 +58,12 @@ public class GameManager : MonoBehaviour
     }
 
     //Difficulty Settings
-    public void setNumShots(int numShots)
+    public void SetNumShots(int numShots)
     {
         maxShots = numShots;
     }
 
-    public int getNumShots()
+    public int GetNumShots()
     {
         return maxShots;
     }
