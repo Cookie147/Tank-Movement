@@ -9,14 +9,13 @@ public class MineScript : MonoBehaviour
     public int TRIGGERRANGE;
     public float fenceTime;
     public float quickCharge;
-    public float colliderRadius;
-    public float timer;
     public bool exploded;
     public MeshRenderer mr;
     public Material yellowMat, redMat;
     public List<GameObject> objectsInRange;
 
     private float mineSize;
+    private float timer;
     private const int YELLOW = 0;
     private const int RED = 1;
 
@@ -34,7 +33,6 @@ public class MineScript : MonoBehaviour
     void Start()
     {
         timer = 20f;
-        colliderRadius = GetComponent<SphereCollider>().radius;
         mineSize = transform.localScale.x;
 
         //get all animation components
@@ -105,7 +103,7 @@ public class MineScript : MonoBehaviour
         {
             if (!g)
             {
-                print("removed " + g + " because it does not exist anymore");
+                //print("removed " + g + " because it does not exist anymore");
                 objectsInRange.Remove(g);
             }
             else if((g.CompareTag("Player Tank") || g.CompareTag("Enemy Tank")) && 

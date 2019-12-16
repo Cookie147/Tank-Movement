@@ -16,17 +16,18 @@ public class TankShooting : MonoBehaviour
     public Rigidbody shellPrefab;
     public Rigidbody minePrefab;
     public GameObject shotLocation;
-    public GameObject[] shots;
-    public GameObject[] mines;
+
+    private GameObject[] shots;
+    private GameObject[] mines;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //the first three line are made to prevent errors when loading the first level directly
         GameObject s = GameObject.Find("GameManager");
         if(s) maxShots = s.GetComponent<GameManager>().getNumShots();
         if (maxShots == 0) maxShots = 5;
-        print(maxShots);
         mines = new GameObject[maxMines];
         shots = new GameObject[maxShots];
     }
@@ -36,7 +37,7 @@ public class TankShooting : MonoBehaviour
     {
         timeSinceShot -= Time.deltaTime;
 
-        if (timeSinceShot < 0 && Count(shots) < maxShots && Input.GetMouseButtonDown(shootButton))
+        if (timeSinceShot <= 0 && Count(shots) < maxShots && Input.GetMouseButtonDown(shootButton))
         {
             Shoot();
             timeSinceShot = shotReloadTime;
@@ -48,9 +49,11 @@ public class TankShooting : MonoBehaviour
         }
     }
 
+    /*
+     * Creates a new shot at the shotLocation facing the same direction as the turret and adds this shot to the array "shots". 
+     */
     private void Shoot()
     {
-        //animation and sounds
         Rigidbody shot = Instantiate(shellPrefab, shotLocation.transform.position, turret.transform.rotation);
         shot.GetComponent<ShellMovement>().SetMyTank(GetComponentInParent<BoxCollider>().gameObject);
         for(int i=0; i<maxShots; ++i)

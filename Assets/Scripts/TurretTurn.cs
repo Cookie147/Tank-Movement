@@ -10,13 +10,13 @@ public class TurretTurn : MonoBehaviour
     public Rigidbody turret;
     public GameObject playground;
     public Camera cam;
+    public Slider aimArrow;
+    public GameObject canvasSystem;
+    public Transform arrow;
 
     private int floorMask;
     private const float rayLength = 100f;
 
-    public Slider aimArrow;
-    public GameObject canvasSystem;
-    public Transform arrow;
 
     // Start is called before the first frame update
     void Start()
@@ -44,24 +44,12 @@ public class TurretTurn : MonoBehaviour
             print("no mouse found!");
             return;
         }
+
         Vector3 mousePos = Input.mousePosition;
-        /*
-        //not exactly the direction the mouse is
-        //this could be solved using an arrow that indicates exactly where the shot will go (just let it have the same rotation as the turret)
-        Vector2 tankOnScreen = cam.WorldToViewportPoint(transform.position);
-        Vector2 mouseOnScreen = (Vector2) cam.ScreenToViewportPoint(mousePos);
-        float angle = -90f - Mathf.Atan2(tankOnScreen.y - mouseOnScreen.y, tankOnScreen.x - mouseOnScreen.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0f, angle, 0f));
-
-        
-        //*/
-
-
-        //*
-        //works exactly but doesn't support multiple inputs, e.g. doesn't turn while movement buttons are pressed
         Ray r = cam.ScreenPointToRay(mousePos);
         float d = 0;
 
+        //Raycast from camera wiev point towards the mouse indicator
         if (Physics.Raycast(r, out RaycastHit hit, rayLength, floorMask))
         {
             Vector3 point = hit.point;
@@ -71,11 +59,11 @@ public class TurretTurn : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(direction);
             d = direction.magnitude;
         }
+
         //the arrow indicating where exactly the shot will go
         canvasSystem.transform.rotation = transform.rotation;
         aimArrow.value = d;
         arrow.localScale = new Vector3(ScaleArrow(d), 1, 2);
-        //*/
     }
 
     /*
