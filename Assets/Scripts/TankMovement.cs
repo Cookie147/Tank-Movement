@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankMovement : MonoBehaviour
 {
     public Rigidbody rb;
-    public float speed = 5;
+    public float speed;
     public AudioSource movementAudio;
     public AudioClip movingClip;
     public AudioClip idleClip;
@@ -27,6 +27,10 @@ public class TankMovement : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
+    /*
+     * makes the tank move according to the WASD or arrow keys input. 
+     * also sets sounds according to the tank's movement state
+     */
     private void Movement()
     {
         //Tank movement

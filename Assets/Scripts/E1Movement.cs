@@ -91,7 +91,6 @@ public class E1Movement : MonoBehaviour
         direction = (direction + Random.Range(-2, 2) + 7) % 8;//same here
         startPos = transform.position;
         moving = true;
-        //print("length: " + length + ", dir: " + direction);
     }
 
     /*

@@ -26,7 +26,6 @@ public class E1Shooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //to be  accustomed for each enemy tank
         reloadTime = 1f;
         playerTank = GameObject.Find("Tank");
         shots = new Rigidbody[maxShots];
@@ -37,18 +36,15 @@ public class E1Shooting : MonoBehaviour
     void Update()
     {
         reloadTime -= Time.deltaTime;
-        GetNewShotDirection(1);//to be added when it is finished
+        GetNewShotDirection(1);
         if (justShot)
         {
-            //GetNewShotDirection(1);//to be deleted
             justShot = false;
         }
         if (Turn() && AbleToShoot()) //don't change this order!
         {
             Shoot();
         }
-        //not yet implemented
-        //CheckThreats();
     }
 
     /*
@@ -56,7 +52,6 @@ public class E1Shooting : MonoBehaviour
      */
     private void Shoot()
     {
-        //animation and sounds
         Rigidbody shot = Instantiate(shellPrefab, shotLocation.transform.position, turret.transform.rotation);
         shot.GetComponent<ShellMovement>().SetMyTank(GetComponentInParent<BoxCollider>().gameObject);
         for(int i = 0; i < shots.Length; ++i) {
@@ -106,15 +101,13 @@ public class E1Shooting : MonoBehaviour
         for (int i = 0; i < 360; i += 5)
         {
             Vector3 directionToCheck = Quaternion.Euler(new Vector3(0, i, 0)) * Vector3.forward;
-            //print("checking: " + i + " from " + transform.position.ToString());
-            //the first raycast that will most likely hit a wall, or maybe a player or mine (ignored so far)
+            //the first raycast that will most likely hit a wall
             if (Physics.Raycast(transform.position, directionToCheck, out RaycastHit hit0, maxRayDistance))
             {
                 //if the player is hit in this direction, that is the best option we can possibly find, so save the angle and end the method
                 if (hit0.collider.CompareTag("Player Tank"))
                 {
                     bestDirection = i;
-                    //print("direct player hit detected in direction " + bestDirection);
                     break;
                 }
                 //if a wall is hit, we'll have to check with a new raycast if a shot that bounces off the wall would hit something useful
@@ -124,7 +117,7 @@ public class E1Shooting : MonoBehaviour
                     //this could be done recusrively to be able to perform arbitrarily many bounces. Here, however, it will be implemented for 1 bounce only
                     if (Physics.Raycast(hit0.point, Vector3.Reflect(directionToCheck, hit0.normal), out RaycastHit hit1, maxRayDistance))
                     {
-                        Debug.DrawRay(hit0.point, Vector3.Reflect(directionToCheck, hit0.normal) * 10, Color.black, 0f);
+                        //Debug.DrawRay(hit0.point, Vector3.Reflect(directionToCheck, hit0.normal) * 10, Color.black, 0f);
                         //if the player is hit now, that is the best option we can find now, so save the INITIAL angle (not the one of the second Raycast) and end the method
                         if (hit1.collider.CompareTag("Player Tank"))
                         {
@@ -148,14 +141,12 @@ public class E1Shooting : MonoBehaviour
         {
             do {
                 shotDirection = Random.Range(0f, 360f);
-                //print("random direction: " + shotDirection);
             } while (CheckSelfHit());
             randomDirection = true;
         }
         else if (bestDirection != -1)
         {
             shotDirection = (bestDirection + 360) % 360;
-            //print("shotDirection is now: " + shotDirection);
         }
     }//get new shot direction
 
@@ -170,32 +161,6 @@ public class E1Shooting : MonoBehaviour
         float currentAngle = (transform.eulerAngles.y + 360) % 360;
         if (Mathf.Abs(currentAngle - shotDirection) < inaccurracy) return true;
 
-
-
-        /*
-        Vector3 nD = Vector3.RotateTowards(transform.eulerAngles, targetDir, rotationSpeed * Time.deltaTime, 0.0f);
-        print("nD: " + nD.ToString());
-        transform.rotation = Quaternion.Euler(nD);
-        /*
-        Vector3 targetDirection = Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward;
-        print("target direction is " + targetDirection.ToString());
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed * Time.deltaTime * Mathf.Deg2Rad, 0.0f);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newDirection), rotationSpeed * Time.deltaTime);
-        transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, newDirection, rotationSpeed * Time.deltaTime);
-        //transform.Rotate
-        return false;
-        //*/
-        //*
-        //print("current angle is: " + currentAngle);
-        //int dir = Vector3.SignedAngle(transform.eulerAngles, Quaternion.Euler(new Vector3(0, shotDirection, 0)) * Vector3.forward, Vector3.up) > 0 ? 1 : -1;
-        //int dir = 0;
-
-        //transform.Rotate(new Vector3(0, 1, 0), rotationSpeed * Time.deltaTime * dir);
-        //print("rotated from " + currentAngle + " to " + transform.eulerAngles.y);
-        //*/
-
-
-        //*this code works but it's ugly af
         //right means clockwise, in that case the variable should be 1 (-1 chagnes the direction the turret will rotate)
         float right = (shotDirection - currentAngle + 360) % 360;
         float left = (currentAngle - shotDirection + 360) % 360;
@@ -203,17 +168,7 @@ public class E1Shooting : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(new Vector3(0, rotationSpeed * Time.deltaTime * leftOrRight, 0) + transform.eulerAngles);
 
-        //*/
         return false;
-    }
-
-    /*
-     * This method checks if a bullet is flying towards it so it can destory it before it hits
-     * in case of the moving tanks, it should also check for mines it could run into
-     */
-    private void CheckThreats()
-    {
-
     }
 
     /*
