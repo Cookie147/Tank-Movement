@@ -2721,8 +2721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bcc9cf82e454bada7f701fc47b330e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTank: {fileID: 0}
-  d: {fileID: 0}
 --- !u!1 &1557789480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,56 +3184,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624653499}
   m_CullTransparentMesh: 0
---- !u!1 &1627396091
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1627396093}
-  - component: {fileID: 1627396092}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1627396092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627396091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d1cd2552f9e849a2b40993951ba7a94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxShots: 5
-  tank: {fileID: 0}
-  chassis: {fileID: 0}
-  leftTracks: {fileID: 0}
-  rightTracks: {fileID: 0}
-  turret: {fileID: 0}
-  newMaterial: {fileID: 2100000, guid: a9af0b6208c8d421392d9f17e8ced01c, type: 2}
---- !u!4 &1627396093
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627396091}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1683389813
 GameObject:
   m_ObjectHideFlags: 0
@@ -3415,7 +3363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numShots: 5
-  gameManager: {fileID: 1627396091}
+  gameManager: {fileID: 0}
 --- !u!1 &1783492406
 GameObject:
   m_ObjectHideFlags: 0

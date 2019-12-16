@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex > 0)
         {
             //in loadscreen
-            if(SceneManager.GetActiveScene().buildIndex%2 == 1 && !gameWon)
+            if(SceneManager.GetActiveScene().buildIndex%2 == 0 && !gameWon)
             {
                 //Wait for 2.5 seconds in loadscreen of next level
                 timer += Time.deltaTime;
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
             }
 
             //in level
-            if(SceneManager.GetActiveScene().buildIndex%2 == 0)
+            if(SceneManager.GetActiveScene().buildIndex%2 == 1)
             {
                 if (colorSet == false)
                 {
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
             }
 
             timer1 += Time.deltaTime;
-            if (timer1 > waitingTime)
+            if (timer1 > 1f)
             {
                 timer1 = 0f;
                 colorSet = false;
@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu 1");
     }
 
     public void QuitGame()
